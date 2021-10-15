@@ -1,0 +1,55 @@
+,LastName,FirstName,BirthCountry,Gender,CitizenshipCountry,CitizenshipBasis,CurrentEmploymentType,CurrentEmploymentTitle,EmailAddress,MilitaryServiceBranch,MilitaryDischargeType,FullName,Age,YearsSinceCurrentEmploymentStart,YearsSincePassportIssueDate,YearsToPassportExpirationDate,YearsSinceMilitaryDischargeDate,KModesClusters
+0,Bramar,Mat,Tethys,Male,Tethys,BirthNation,Administration,Assistant to CEO,Mat.Bramar@gastech.com.kronos,,,Mat Bramar,32,8,6,3,,0
+1,Ribera,Anda,Tethys,Female,Tethys,BirthNation,Administration,Assistant to CFO,Anda.Ribera@gastech.com.kronos,,,Anda Ribera,38,4,4,5,,0
+2,Pantanal,Rachel,Tethys,Female,Tethys,BirthNation,Administration,Assistant to CIO,Rachel.Pantanal@gastech.com.kronos,,,Rachel Pantanal,29,0,0,9,,0
+3,Lagos,Linda,Tethys,Female,Tethys,BirthNation,Administration,Assistant to COO,Linda.Lagos@gastech.com.kronos,,,Linda Lagos,33,3,4,5,,0
+4,Mies Haber,Ruscella,Kronos,Female,Kronos,BirthNation,Administration,Assistant to Engineering Group Manager,Ruscella.Mies.Haber@gastech.com.kronos,ArmedForcesOfKronos,HonorableDischarge,Ruscella Mies Haber,49,10,,,29,1
+5,Forluniau,Carla,Kronos,Female,Kronos,BirthNation,Administration,Assistant to IT Group Manager,Carla.Forluniau@gastech.com.kronos,ArmedForcesOfKronos,GeneralDischarge,Carla Forluniau,32,8,,,12,1
+6,Lais,Cornelia,Kronos,Female,Kronos,BirthNation,Administration,Assistant to Security Group Manager,Cornelia.Lais@gastech.com.kronos,ArmedForcesOfKronos,GeneralDischarge,Cornelia Lais,22,2,,,2,1
+7,Onda,Marin,Tethys,Male,Tethys,BirthNation,Engineering,Drill Site Manager,Marin.Onda@gastech.com.kronos,,,Marin Onda,44,10,8,1,,0
+8,Borrasca,Isande,Tethys,Female,Tethys,BirthNation,Engineering,Drill Technician,Isande.Borrasca@gastech.com.kronos,,,Isande Borrasca,34,9,5,4,,0
+9,Calzas,Axel,Tethys,Male,Tethys,BirthNation,Engineering,Drill Technician,Axel.Calzas@gastech.com.kronos,,,Axel Calzas,38,16,1,8,,0
+10,Orilla,Kare,Tethys,Female,Tethys,BirthNation,Engineering,Drill Technician,Kare.Orilla@gastech.com.kronos,,,Kare Orilla,49,8,0,9,,0
+11,Orilla,Elsa,Tethys,Female,Tethys,BirthNation,Engineering,Drill Technician,Elsa.Orilla@gastech.com.kronos,,,Elsa Orilla,31,9,3,6,,0
+12,Tempestad,Brand,Tethys,Male,Tethys,BirthNation,Engineering,Drill Technician,Brand.Tempestad@gastech.com.kronos,,,Brand Tempestad,34,9,1,8,,0
+13,Azada,Lars,Tethys,Male,Tethys,BirthNation,Engineering,Engineer,Lars.Azada@gastech.com.kronos,TethanDefenseForceAir,GeneralDischarge,Lars Azada,40,18,2,7,18,0
+14,Balas,Felix,Tethys,Male,Tethys,BirthNation,Engineering,Engineer,Felix.Balas@gastech.com.kronos,TethanDefenseForceNavy,HonorableDischarge,Felix Balas,53,9,8,1,25,0
+15,Dedos,Lidelse,Tethys,Female,Tethys,BirthNation,Engineering,Engineering Group Manager,Lidelse.Dedos@gastech.com.kronos,,,Lidelse Dedos,61,10,5,4,,0
+16,Frente,Birgitta,Tethys,Female,Tethys,BirthNation,Engineering,Geologist,Birgitta.Frente@gastech.com.kronos,,,Birgitta Frente,37,14,7,2,,0
+17,Nubarron,Adra,Tethys,Female,Tethys,BirthNation,Engineering,Geologist,Adra.Nubarron@gastech.com.kronos,,,Adra Nubarron,45,19,6,3,,0
+18,Cazar,Gustav,Tethys,Male,Tethys,BirthNation,Engineering,Hydraulic Technician,Gustav.Cazar@gastech.com.kronos,,,Gustav Cazar,27,4,4,5,,0
+19,Frente,Vira,Tethys,Female,Tethys,BirthNation,Engineering,Hydraulic Technician,Vira.Frente@gastech.com.kronos,,,Vira Frente,36,12,3,6,,0
+20,Vasco-Pais,Willem,Tethys,Male,Tethys,BirthNation,Executive,Environmental Safety Advisor,Willem.Vasco-Pais@gastech.com.kronos,,,Willem Vasco-Pais,38,3,2,7,,0
+21,Sanjorge Jr.,Sten,Tethys,Male,Tethys,BirthNation,Executive,President/CEO,Sten.Sanjorge Jr.@gastech.com.kronos,,,Sten Sanjorge Jr.,65,23,0,9,,0
+22,Barranco,Ingrid,Tethys,Female,Tethys,BirthNation,Executive,SVP/CFO,Ingrid.Barranco@gastech.com.kronos,,,Ingrid Barranco,52,10,0,9,,0
+23,Campo-Corrente,Ada,Tethys,Female,Tethys,BirthNation,Executive,SVP/CIO,Ada.Campo-Corrente@gastech.com.kronos,,,Ada Campo-Corrente,62,9,0,9,,0
+24,Strum,Orhan,Asteria,Male,Tethys,ParentCitizenship,Executive,SVP/COO,Orhan.Strum@gastech.com.kronos,,,Orhan Strum,50,10,2,7,,0
+25,Ovan,Bertrand,Tethys,Male,Tethys,BirthNation,Facilities,Facilities Group Manager,Bertrand.Ovan@gastech.com.kronos,TethanDefenseForceAir,HonorableDischarge,Bertrand Ovan,49,15,5,4,20,0
+26,Arpa,Emile,Kronos,Male,Kronos,BirthNation,Facilities,Janitor,Emile.Arpa@gastech.com.kronos,ArmedForcesOfKronos,GeneralDischarge,Emile Arpa,21,0,,,1,1
+27,Awelon,Varro,Kronos,Male,Kronos,BirthNation,Facilities,Janitor,Varro.Awelon@gastech.com.kronos,ArmedForcesOfKronos,GeneralDischarge,Varro Awelon,27,1,,,7,1
+28,Coginian,Dante,Kronos,Male,Kronos,BirthNation,Facilities,Lead Janitor,Dante.Coginian@gastech.com.kronos,ArmedForcesOfKronos,GeneralDischarge,Dante Coginian,42,19,,,21,1
+29,Hafon,Albina,Kronos,Female,Kronos,BirthNation,Facilities,Truck Driver,Albina.Hafon@gastech.com.kronos,ArmedForcesOfKronos,GeneralDischarge,Albina Hafon,26,4,,,6,1
+30,Hawelon,Benito,Kronos,Male,Kronos,BirthNation,Facilities,Truck Driver,Benito.Hawelon@gastech.com.kronos,ArmedForcesOfKronos,HonorableDischarge,Benito Hawelon,35,13,,,14,1
+31,Hawelon,Claudio,Kronos,Male,Kronos,BirthNation,Facilities,Truck Driver,Claudio.Hawelon@gastech.com.kronos,ArmedForcesOfKronos,GeneralDischarge,Claudio Hawelon,30,6,,,10,1
+32,Mies,Henk,Kronos,Male,Kronos,BirthNation,Facilities,Truck Driver,Henk.Mies@gastech.com.kronos,ArmedForcesOfKronos,HonorableDischarge,Henk Mies,29,0,,,9,1
+33,Morlun,Valeria,Kronos,Female,Kronos,BirthNation,Facilities,Truck Driver,Valeria.Morlun@gastech.com.kronos,ArmedForcesOfKronos,HonorableDischarge,Valeria Morlun,32,10,,,12,1
+34,Morlun,Adan,Kronos,Male,Kronos,BirthNation,Facilities,Truck Driver,Adan.Morlun@gastech.com.kronos,ArmedForcesOfKronos,HonorableDischarge,Adan Morlun,29,8,,,8,1
+35,Morluniau,Cecilia,Kronos,Female,Kronos,BirthNation,Facilities,Truck Driver,Cecilia.Morluniau@gastech.com.kronos,ArmedForcesOfKronos,GeneralDischarge,Cecilia Morluniau,25,4,,,5,1
+36,Nant,Irene,Kronos,Female,Kronos,BirthNation,Facilities,Truck Driver,Irene.Nant@gastech.com.kronos,ArmedForcesOfKronos,GeneralDischarge,Irene Nant,28,5,,,8,1
+37,Scozzese,Dylan,Kronos,Male,Kronos,BirthNation,Facilities,Truck Driver,Dylan.Scozzese@gastech.com.kronos,ArmedForcesOfKronos,HonorableDischarge,Dylan Scozzese,27,6,,,7,1
+38,Bergen,Linnea,Tethys,Female,Tethys,BirthNation,Information Technology,IT Group Manager,Linnea.Bergen@gastech.com.kronos,,,Linnea Bergen,44,9,9,0,,0
+39,Alcazar,Lucas,Tethys,Male,Tethys,BirthNation,Information Technology,IT Helpdesk,Lucas.Alcazar@gastech.com.kronos,,,Lucas Alcazar,23,3,0,9,,0
+40,Baza,Isak,Tethys,Male,Tethys,BirthNation,Information Technology,IT Technician,Isak.Baza@gastech.com.kronos,,,Isak Baza,34,11,5,4,,0
+41,Calixto,Nils,Tethys,Male,Tethys,BirthNation,Information Technology,IT Technician,Nils.Calixto@gastech.com.kronos,,,Nils Calixto,31,9,1,8,,0
+42,Flecha,Sven,Tethys,Male,Tethys,BirthNation,Information Technology,IT Technician,Sven.Flecha@gastech.com.kronos,,,Sven Flecha,27,3,7,2,,0
+43,Herrero,Kanon,Tethys,Male,Tethys,BirthNation,Security,Badging Office,Kanon.Herrero@gastech.com.kronos,,,Kanon Herrero,29,5,5,4,,0
+44,Lagos,Varja,Tethys,Female,Tethys,BirthNation,Security,Badging Office,Varja.Lagos@gastech.com.kronos,,,Varja Lagos,37,7,0,9,,0
+45,Fusil,Stenig,Tethys,Male,Tethys,BirthNation,Security,Building Control,Stenig.Fusil@gastech.com.kronos,TethanDefenseForceArmy,HonorableDischarge,Stenig Fusil,50,9,7,2,26,0
+46,Mies,Minke,Kronos,Male,Kronos,BirthNation,Security,Perimeter Control,Minke.Mies@gastech.com.kronos,ArmedForcesOfKronos,GeneralDischarge,Minke Mies,21,0,,,2,1
+47,Osvaldo,Hennie,Kronos,Male,Kronos,BirthNation,Security,Perimeter Control,Hennie.Osvaldo@gastech.com.kronos,ArmedForcesOfKronos,GeneralDischarge,Hennie Osvaldo,25,2,,,3,1
+48,Vann,Isia,Kronos,Male,Kronos,BirthNation,Security,Perimeter Control,Isia.Vann@gastech.com.kronos,ArmedForcesOfKronos,GeneralDischarge,Isia Vann,27,6,,,6,1
+49,Vann,Edvard,Kronos,Male,Kronos,BirthNation,Security,Perimeter Control,Edvard.Vann@gastech.com.kronos,ArmedForcesOfKronos,HonorableDischarge,Edvard Vann,22,0,,,2,1
+50,Resumir,Felix,Tethys,Male,Tethys,BirthNation,Security,Security Group Manager,Felix.Resumir@gastech.com.kronos,TethanDefenseForceArmy,HonorableDischarge,Felix Resumir,54,10,8,1,16,0
+51,Bodrogi,Loreto,Kronos,Male,Kronos,BirthNation,Security,Site Control,Loreto.Bodrogi@gastech.com.kronos,ArmedForcesOfKronos,HonorableDischarge,Loreto Bodrogi,24,0,,,5,1
+52,Cocinaro,Hideki,Tethys,Male,Tethys,BirthNation,Security,Site Control,Hideki.Cocinaro@gastech.com.kronos,TethanDefenseForceArmy,HonorableDischarge,Hideki Cocinaro,33,4,0,9,4,0
+53,Ferro,Inga,Kronos,Female,Kronos,BirthNation,Security,Site Control,Inga.Ferro@gastech.com.kronos,ArmedForcesOfKronos,GeneralDischarge,Inga Ferro,24,1,,,1,1
