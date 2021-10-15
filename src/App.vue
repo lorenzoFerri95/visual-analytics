@@ -1,18 +1,18 @@
 <template>
   <div id="app">
-    <Network/>
+    <Dashboard />
   </div>
 </template>
 
 <script>
-import Network from './components/Network.vue';
+import Dashboard from "@/components/Dashboard.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    Network,
-  }
-}
+    Dashboard,
+  },
+};
 </script>
 
 <style>

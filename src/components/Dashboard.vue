@@ -1,10 +1,20 @@
 <template>
-  <div></div>
+  <div>
+    <Network />
+    <BarChart />
+  </div>
 </template>
 
 <script>
+import Network from "@/components/dashboard/Network.vue";
+import BarChart from "@/components/dashboard/BarChart.vue";
+
 export default {
-  name: "Network",
+  name: "Dashboard",
+  components: {
+    Network,
+    BarChart,
+  },
   data: function() {
     return {
       nodes: [],
@@ -14,7 +24,7 @@ export default {
     fetch("./static/data/nodes.json")
       .then((res) => res.json())
       .then(function(data) {
-          console.log(data);
+        console.log(data);
       });
   },
 };
