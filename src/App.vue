@@ -1,6 +1,22 @@
 <template>
-  <div id="app">
-    <Dashboard />
+  <div id="app" class="container">
+    <div class="row justify-content-center">
+      <div class="col-auto">
+        <h1>VAST Challenge 2014</h1>
+      </div>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-auto">
+        <h4>mini-challenge 1</h4>
+      </div>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-auto">
+        <Dashboard />
+      </div>
+    </div>
   </div>
 </template>
 

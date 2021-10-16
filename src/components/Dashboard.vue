@@ -1,7 +1,17 @@
 <template>
-  <div>
-    <Network />
-    <BarChart />
+  <div class="container">
+    <div class="row">
+      <div class="col-auto">
+        <h6>Network</h6>
+        <Network />
+      </div>
+      <div class="col-auto">
+        <h6>Bar Charts</h6>
+        <BarChart />
+      </div>
+    </div>
+    
+    
   </div>
 </template>
 
@@ -30,4 +40,13 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style>
+/* #header {
+  width: 200px;
+  height: 80px;
+  padding: 10px 10px 10px 10px;
+  border: 10px 10px 10px 10px;
+  margin: 10px 10px 10px 10px;
+  text-align: center;
+} */
+</style>
