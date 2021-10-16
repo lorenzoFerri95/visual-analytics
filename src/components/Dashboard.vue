@@ -2,46 +2,47 @@
   <div class="container">
     <div class="row">
       <div class="col-auto">
-        <h6>Network</h6>
-        <Network />
-      </div>
-      <div class="col-auto">
-        <h6>Bar Charts</h6>
+        <h5>Bar Charts</h5>
+        <BarChart />
+        <BarChart />
+        <BarChart />
         <BarChart />
       </div>
+      <div class="col-auto">
+        <h5>Network</h5>
+        <Network />
+      </div>
     </div>
-    
-    
   </div>
 </template>
 
 <script>
-import Network from "@/components/dashboard/Network.vue";
-import BarChart from "@/components/dashboard/BarChart.vue";
+  import Network from "@/components/plots/Network.vue";
+  import BarChart from "@/components/plots/BarChart.vue";
 
-export default {
-  name: "Dashboard",
-  components: {
-    Network,
-    BarChart,
-  },
-  data: function() {
-    return {
-      nodes: [],
-    };
-  },
-  mounted: function() {
-    fetch("./static/data/nodes.json")
-      .then((res) => res.json())
-      .then(function(data) {
-        console.log(data);
-      });
-  },
-};
+  export default {
+    name: "Dashboard",
+    components: {
+      Network,
+      BarChart,
+    },
+    data: function() {
+      return {
+        nodes: [],
+      };
+    },
+    mounted: function() {
+      fetch("./static/data/nodes.json")
+        .then(response => response.json())
+        .then(data => (this.nodes = Object.values(data.Id)));
+    },
+    watch: {},
+    methods: {},
+  };
 </script>
 
-<style>
-/* #header {
+<style scoped>
+  /* #header {
   width: 200px;
   height: 80px;
   padding: 10px 10px 10px 10px;

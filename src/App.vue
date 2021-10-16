@@ -1,14 +1,14 @@
 <template>
   <div id="app" class="container">
     <div class="row justify-content-center">
-      <div class="col-auto">
+      <div class="col-auto align-self-center">
         <h1>VAST Challenge 2014</h1>
       </div>
     </div>
 
     <div class="row justify-content-center">
       <div class="col-auto">
-        <h4>mini-challenge 1</h4>
+        <h3>mini-challenge 1</h3>
       </div>
     </div>
 
@@ -31,7 +31,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
