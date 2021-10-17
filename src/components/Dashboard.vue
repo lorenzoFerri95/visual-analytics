@@ -41,8 +41,10 @@
   import Network from "@/components/plots/Network.vue";
   import BarChart from "@/components/plots/BarChart.vue";
   import BaseCard from "@/components/base/BaseCard.vue";
+  import crossfilter from "crossfilter2";
 
-  const cf = require("crossfilter2");
+/*   let cf;
+  let dimAgeBind; */
 
   export default {
     name: "Dashboard",
@@ -53,39 +55,60 @@
     },
     data: function() {
       return {
-        count: 0,
+        /* variabili di stato per i dati dei files */
+        employeeData: [],
         nodes: [],
         edges: [],
-        employeeData: [],
+        /* variabili di stato per i dati da inserire nella pagina web */
+        count: 0,
       };
     },
     mounted: function() {
-      fetch("./static/data/nodes.json")
-        .then(response => response.json())
-        .then(data => {
-          /* console.log(data); */
-          this.nodes = Object.values(data.Id);
-        });
-
-      fetch("./static/data/edges_split.json")
-        .then(response => response.json())
-        .then(data => {
-          console.log(data);
-        });
-
       fetch("./static/data/employee.json")
         .then(response => response.json())
         .then(data => {
-          console.log(data);
-          /*           this.employeeData = data.map(row => {
+          this.employeeData = data.map(row => {
             const parsedData = {
-              gender: row.gender
-            }
-            return parsedData
-          }) */
+              FullName: row.FullName,
+              Gender: row.Gender,
+              Age: +row.Age,
+              AgeBind: row.AgeBind,
+              Cluster: +row.Cluster,
+              JobType: row.CurrentEmploymentType,
+              JobYears: +row.YearsSinceCurrentEmploymentStart,
+              JobYearsBind: row.YSCESBind,
+            };
+            return parsedData;
+          });
         });
 
-      console.log(cf);
+      fetch("./static/data/nodes.json")
+        .then(response => response.json())
+        .then(data => {
+          this.nodes = data;
+        });
+
+      fetch("./static/data/edges.json")
+        .then(response => response.json())
+        .then(data => {
+          this.edges = data;
+        });
+
+      console.log(this.employeeData);
+      const cf = crossfilter(this.employeeData);
+      const dimAgeBind = cf.dimension(row => row.AgeBind);
+      console.log(
+        dimAgeBind
+          .group()
+          .reduceCount()
+          .all()
+      );
+      console.log(
+        cf
+          .groupAll()
+          .reduceCount()
+          .value()
+      );
     },
     watch: {},
     methods: {},
