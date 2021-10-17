@@ -3,7 +3,7 @@
     <div class="card bg-light mb-3" style="max-width: 18rem;">
       <div class="card-header">{{ header }}</div>
       <div class="card-body">
-        <p class="card-text">{{ text }}</p>
+        <p id="card-text">{{ text }}</p>
       </div>
     </div>
   </div>
@@ -20,7 +20,7 @@
 </script>
 
 <style scoped>
-  .card-text {
+  #card-text {
     text-align: center;
   }
 </style>

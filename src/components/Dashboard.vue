@@ -42,6 +42,8 @@
   import BarChart from "@/components/plots/BarChart.vue";
   import BaseCard from "@/components/base/BaseCard.vue";
 
+  const cf = require("crossfilter2");
+
   export default {
     name: "Dashboard",
     components: {
@@ -75,13 +77,15 @@
         .then(response => response.json())
         .then(data => {
           console.log(data);
-/*           this.employeeData = data.map(row => {
+          /*           this.employeeData = data.map(row => {
             const parsedData = {
               gender: row.gender
             }
             return parsedData
           }) */
         });
+
+      console.log(cf);
     },
     watch: {},
     methods: {},
