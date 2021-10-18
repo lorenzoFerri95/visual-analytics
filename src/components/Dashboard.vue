@@ -1,38 +1,28 @@
 <template>
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-auto align-self-center">
-        <h5>Counters</h5>
-      </div>
-    </div>
-
-    <div class="row justify-content-center">
-      <div class="col-auto align-self-center">
+  <div class="container-fluid" style="padding-left: 35px;">
+    <div class="row justify-content-start">
+      <div class="col-auto overflow-auto" id="lateral-scroll-bar">
+        <h5 class="header">Counters</h5>
         <BaseCard header="# of Employee" :text="numEmployee" />
-      </div>
-      <div class="col-auto align-self-center">
         <BaseCard header="Counter 2" :text="count" />
-      </div>
-      <div class="col-auto align-self-center">
         <BaseCard header="Counter 3" :text="count" />
-      </div>
-      <div class="col-auto align-self-center">
         <BaseCard header="Counter 4" :text="count" />
+        <BaseCard header="Counter 5" :text="count" />
+        <BaseCard header="Counter 6" :text="count" />
+        <BaseCard header="Counter 7" :text="count" />
+      </div>
+      <div class="col-auto">
+        <h5 class="header">Bar Charts</h5>
+        <BarChart />
+        <BarChart />
+        <BarChart />
+        <BarChart />
       </div>
     </div>
 
-    <div class="row">
-      <div class="col-auto">
-        <h5>Bar Charts</h5>
-        <BarChart />
-        <BarChart />
-        <BarChart />
-        <BarChart />
-      </div>
-      <div class="col-auto">
-        <h5>Network</h5>
-        <Network />
-      </div>
+    <div class="row justify-content-center">
+      <h5 class="header">Network</h5>
+      <Network />
     </div>
   </div>
 </template>
@@ -169,12 +159,12 @@
 </script>
 
 <style scoped>
-  /* #header {
-  width: 200px;
-  height: 80px;
-  padding: 10px 10px 10px 10px;
-  border: 10px 10px 10px 10px;
-  margin: 10px 10px 10px 10px;
-  text-align: center;
-} */
+  .header {
+    text-align: center;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+  }
+  #lateral-scroll-bar {
+    height: 500px;
+  }
 </style>

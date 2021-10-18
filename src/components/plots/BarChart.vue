@@ -1,5 +1,5 @@
 <template>
-  <div></div>
+  <div><p>BarChart</p></div>
 </template>
 
 <script>

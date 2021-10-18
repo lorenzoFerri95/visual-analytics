@@ -1,10 +1,10 @@
 <template>
-  <div>
-    <div class="card bg-light mb-3" style="max-width: 18rem;">
-      <div class="card-header">{{ header }}</div>
-      <div class="card-body">
-        <p id="card-text">{{ text }}</p>
-      </div>
+  <div class="card bg-light mb-3 shadow-sm">
+    <div class="card-header text-center pb-0">
+      <h6>{{ header }}</h6>
+    </div>
+    <div class="card-body pb-0">
+      <p id="card-text">{{ text }}</p>
     </div>
   </div>
 </template>
@@ -23,5 +23,8 @@
   #card-text {
     text-align: center;
     font-size: 25px;
+  }
+  .card {
+    max-width: 18rem;
   }
 </style>

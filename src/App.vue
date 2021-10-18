@@ -1,41 +1,30 @@
 <template>
-  <div id="app" class="container">
+  <div class="container-fluid mt-3 mb-4">
     <div class="row justify-content-center">
-      <div class="col-auto align-self-center">
+      <div id="title" class="col-auto">
         <h1>VAST Challenge 2014</h1>
-      </div>
-    </div>
-
-    <div class="row justify-content-center">
-      <div class="col-auto">
         <h3>mini-challenge 1</h3>
       </div>
     </div>
-
-    <div class="row justify-content-center">
-      <div class="col-auto">
-        <Dashboard />
-      </div>
+    <div class="row">
+      <Dashboard />
     </div>
   </div>
 </template>
 
 <script>
-import Dashboard from "@/components/Dashboard.vue";
+  import Dashboard from "@/components/Dashboard.vue";
 
-export default {
-  name: "App",
-  components: {
-    Dashboard,
-  },
-};
+  export default {
+    name: "App",
+    components: {
+      Dashboard,
+    },
+  };
 </script>
 
 <style scoped>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
-}
+  #title {
+    text-align: center;
+  }
 </style>
