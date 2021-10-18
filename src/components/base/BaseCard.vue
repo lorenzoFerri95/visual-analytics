@@ -22,5 +22,6 @@
 <style scoped>
   #card-text {
     text-align: center;
+    font-size: 25px;
   }
 </style>
