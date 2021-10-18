@@ -1,7 +1,12 @@
 <template>
-  <div class="container-fluid" style="padding-left: 35px;">
+  <div>
+    <div class="row justify-content-center mb-5 pb-3">
+      <h5 class="header">Filters</h5>
+      <TheForm :ageBind="ageBind" :jobType="jobType" />
+    </div>
+
     <div class="row justify-content-start">
-      <div class="col-auto overflow-auto" id="lateral-scroll-bar">
+      <div class="col-auto overflow-auto" id="cards-scrollbar">
         <h5 class="header">Counters</h5>
         <BaseCard header="# of Employee" :text="numEmployee" />
         <BaseCard header="Counter 2" :text="count" />
@@ -11,6 +16,7 @@
         <BaseCard header="Counter 6" :text="count" />
         <BaseCard header="Counter 7" :text="count" />
       </div>
+
       <div class="col-auto">
         <h5 class="header">Bar Charts</h5>
         <BarChart />
@@ -31,6 +37,7 @@
   import Network from "@/components/plots/Network.vue";
   import BarChart from "@/components/plots/BarChart.vue";
   import BaseCard from "@/components/base/BaseCard.vue";
+  import TheForm from "@/components/TheForm.vue";
   import crossfilter from "crossfilter2";
 
   export default {
@@ -39,6 +46,7 @@
       Network,
       BarChart,
       BaseCard,
+      TheForm,
     },
     data: function() {
       return {
@@ -164,7 +172,7 @@
     margin-bottom: 10px;
     padding-bottom: 10px;
   }
-  #lateral-scroll-bar {
+  #cards-scrollbar {
     height: 500px;
   }
 </style>

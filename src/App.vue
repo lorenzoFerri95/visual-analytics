@@ -1,6 +1,6 @@
 <template>
-  <div class="container-fluid mt-3 mb-4">
-    <div class="row justify-content-center">
+  <div class="container-fluid ms-4 me-3">
+    <div class="row justify-content-center mt-3 mb-4">
       <div id="title" class="col-auto">
         <h1>VAST Challenge 2014</h1>
         <h3>mini-challenge 1</h3>
