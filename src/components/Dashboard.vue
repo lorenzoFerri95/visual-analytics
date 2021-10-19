@@ -2,7 +2,13 @@
   <div>
     <div class="row justify-content-center mb-5 pb-3">
       <h5 class="header">Filters</h5>
-      <TheForm :ageBind="ageBind" :jobType="jobType" />
+      <TheForm
+        :ageBind="ageBind"
+        :jobType="jobType"
+        :gender="gender"
+        :jobYearsBind="jobYearsBind"
+        :cluster="cluster"
+      />
     </div>
 
     <div class="row justify-content-start">
