@@ -10,6 +10,7 @@
           class="form-select"
           aria-label="Default select example"
         >
+          <option :value="null">All</option>
           <option
             v-for="(val, key) in jobType.options"
             v-bind:key="key"
@@ -24,6 +25,21 @@
       <div class="col-auto">
         <p>Age range</p>
         <div class="input-group">
+          <div>
+            <input
+              id="age-radio-all"
+              v-model="ageBind.value"
+              name="options-age"
+              :value="null"
+              type="radio"
+              class="btn-check"
+              autocomplete="off"
+            />
+            <label for="age-radio-all" class="btn btn-outline-secondary"
+              >All</label
+            >
+          </div>
+
           <div
             v-for="(val, key) in ageBind.options"
             v-bind:key="key"
@@ -50,6 +66,20 @@
       <div class="col-auto">
         <p>Years in current job</p>
         <div class="input-group">
+          <div>
+            <input
+              id="yearJob-radio-all"
+              v-model="jobYearsBind.value"
+              name="options-jobYearsBind"
+              :value="null"
+              type="radio"
+              class="btn-check"
+              autocomplete="off"
+            />
+            <label for="yearJob-radio-all" class="btn btn-outline-secondary"
+              >All</label
+            >
+          </div>
           <div
             v-for="(val, key) in jobYearsBind.options"
             v-bind:key="key"
@@ -76,6 +106,20 @@
       <div class="col-auto">
         <p>Gender</p>
         <div class="input-group">
+          <div>
+            <input
+              id="gender-radio-all"
+              v-model="gender.value"
+              name="options-gender"
+              :value="null"
+              type="radio"
+              class="btn-check"
+              autocomplete="off"
+            />
+            <label for="gender-radio-all" class="btn btn-outline-secondary"
+              >All</label
+            >
+          </div>
           <div
             v-for="(val, key) in gender.options"
             v-bind:key="key"
@@ -102,6 +146,20 @@
       <div class="col-auto">
         <p>Cluster</p>
         <div class="input-group">
+          <div>
+            <input
+              id="cluster-radio-all"
+              v-model="cluster.value"
+              name="options-cluster"
+              :value="null"
+              type="radio"
+              class="btn-check"
+              autocomplete="off"
+            />
+            <label for="cluster-radio-all" class="btn btn-outline-secondary"
+              >All</label
+            >
+          </div>
           <div
             v-for="(val, key) in cluster.options"
             v-bind:key="key"

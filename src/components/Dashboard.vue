@@ -13,7 +13,7 @@
 
     <div class="row justify-content-start">
       <div class="col-auto overflow-auto" id="cards-scrollbar">
-        <h5 class="header">Counters</h5>
+        <h5 class="header">Statistics</h5>
         <BaseCard header="# of Employee" :text="numEmployee" />
         <BaseCard header="Counter 2" :text="count" />
         <BaseCard header="Counter 3" :text="count" />
@@ -45,6 +45,13 @@
   import BaseCard from "@/components/base/BaseCard.vue";
   import TheForm from "@/components/TheForm.vue";
   import crossfilter from "crossfilter2";
+
+  let cf;
+  let dimAgeBind;
+  let dimCluster;
+  let dimGender;
+  let dimJobType;
+  let dimJobYearsBind;
 
   export default {
     name: "Dashboard",
@@ -92,53 +99,48 @@
         .then(data => {
           this.employeeData = data.map(row => this.parseEmployeeRow(row));
 
-          const cf = crossfilter(this.employeeData);
+          cf = crossfilter(this.employeeData);
 
-          this.numEmployee = cf
-            .groupAll()
-            .reduceCount()
-            .value();
-
-          const dimAgeBind = cf.dimension(row => row.AgeBind);
-          const dimCluster = cf.dimension(row => row.Cluster);
-          const dimGender = cf.dimension(row => row.Gender);
-          const dimJobType = cf.dimension(row => row.JobType);
-          const dimJobYearsBind = cf.dimension(row => row.JobYearsBind);
+          dimJobType = cf.dimension(row => row.JobType);
+          dimAgeBind = cf.dimension(row => row.AgeBind);
+          dimJobYearsBind = cf.dimension(row => row.JobYearsBind);
+          dimGender = cf.dimension(row => row.Gender);
+          dimCluster = cf.dimension(row => row.Cluster);
 
           this.ageBind.options = dimAgeBind
             .group()
             .reduceCount()
             .all()
             .map(row => row.key);
-          this.ageBind.value = this.ageBind.options[0];
+          this.ageBind.value = null;
 
           this.gender.options = dimGender
             .group()
             .reduceCount()
             .all()
             .map(row => row.key);
-          this.gender.value = this.gender.options[0];
+          this.gender.value = null;
 
           this.jobType.options = dimJobType
             .group()
             .reduceCount()
             .all()
             .map(row => row.key);
-          this.jobType.value = this.jobType.options[0];
+          this.jobType.value = null;
 
           this.jobYearsBind.options = dimJobYearsBind
             .group()
             .reduceCount()
             .all()
             .map(row => row.key);
-          this.jobYearsBind.value = this.jobYearsBind.options[0];
+          this.jobYearsBind.value = null;
 
           this.cluster.options = dimCluster
             .group()
             .reduceCount()
             .all()
             .map(row => row.key);
-          this.cluster.value = this.cluster.options[0];
+          this.cluster.value = null;
         });
 
       fetch("./static/data/nodes.json")
@@ -153,7 +155,51 @@
           this.edges = data;
         });
     },
-    watch: {},
+    /*     computed: {
+      numRecords() {
+        return cf
+          .groupAll()
+          .reduceCount()
+          .value();
+      },
+    }, */
+    watch: {
+      jobType: {
+        handler(newVal) {
+          dimJobType.filter(newVal.value);
+          this.refreshCounters();
+        },
+        deep: true,
+      },
+      ageBind: {
+        handler(newVal) {
+          dimAgeBind.filter(newVal.value);
+          this.refreshCounters();
+        },
+        deep: true,
+      },
+      jobYearsBind: {
+        handler(newVal) {
+          dimJobYearsBind.filter(newVal.value);
+          this.refreshCounters();
+        },
+        deep: true,
+      },
+      gender: {
+        handler(newVal) {
+          dimGender.filter(newVal.value);
+          this.refreshCounters();
+        },
+        deep: true,
+      },
+      cluster: {
+        handler(newVal) {
+          dimCluster.filter(newVal.value);
+          this.refreshCounters();
+        },
+        deep: true,
+      },
+    },
     methods: {
       parseEmployeeRow(row) {
         const parsedRow = {
@@ -167,6 +213,12 @@
           JobYearsBind: row.YSCESBind,
         };
         return parsedRow;
+      },
+      refreshCounters() {
+        this.numEmployee = cf
+          .groupAll()
+          .reduceCount()
+          .value();
       },
     },
   };
