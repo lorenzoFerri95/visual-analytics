@@ -25,10 +25,22 @@
 
       <div class="col-8">
         <h5 class="header">Bar Charts</h5>
-        <BarChart />
-        <BarChart />
-        <BarChart />
-        <BarChart />
+        <div class="row row justify-content-start ms-5">
+          <div class="col-auto">
+            <BarChart
+              plotId="bc1"
+              :labels="['a', 'b', 'c']"
+              :frequencies="[1, 2, 3]"
+            />
+          </div>
+          <div class="col-auto">
+            <BarChart
+              plotId="bc2"
+              :labels="['k', 'p', 'g']"
+              :frequencies="[5, 6, 7]"
+            />
+          </div>
+        </div>
       </div>
     </div>
 
@@ -107,7 +119,7 @@
           dimGender = cf.dimension(row => row.Gender);
           dimCluster = cf.dimension(row => row.Cluster);
 
-          this.jobType.options.push(null);
+          this.jobType.options.push("All");
           this.jobType.options.push(
             ...dimJobType
               .group()
@@ -117,7 +129,7 @@
           );
           this.jobType.value = this.jobType.options[0];
 
-          this.jobYearsBind.options.push(null);
+          this.jobYearsBind.options.push("All");
           this.jobYearsBind.options.push(
             ...dimJobYearsBind
               .group()
@@ -127,7 +139,7 @@
           );
           this.jobYearsBind.value = this.jobYearsBind.options[0];
 
-          this.ageBind.options.push(null);
+          this.ageBind.options.push("All");
           this.ageBind.options.push(
             ...dimAgeBind
               .group()
@@ -137,7 +149,7 @@
           );
           this.ageBind.value = this.ageBind.options[0];
 
-          this.gender.options.push(null);
+          this.gender.options.push("All");
           this.gender.options.push(
             ...dimGender
               .group()
@@ -147,7 +159,7 @@
           );
           this.gender.value = this.gender.options[0];
 
-          this.cluster.options.push(null);
+          this.cluster.options.push("All");
           this.cluster.options.push(
             ...dimCluster
               .group()
@@ -170,46 +182,58 @@
           this.edges = data;
         });
     },
-    /*     computed: {
-      numRecords() {
-        return cf
-          .groupAll()
-          .reduceCount()
-          .value();
-      },
-    }, */
     watch: {
       jobType: {
         handler(newVal) {
-          dimJobType.filter(newVal.value);
+          if (newVal.value == "All") {
+            dimJobType.filter(null);
+          } else {
+            dimJobType.filter(newVal.value);
+          }
           this.refreshStatistics();
         },
         deep: true,
       },
       ageBind: {
         handler(newVal) {
-          dimAgeBind.filter(newVal.value);
+          if (newVal.value == "All") {
+            dimAgeBind.filter(null);
+          } else {
+            dimAgeBind.filter(newVal.value);
+          }
           this.refreshStatistics();
         },
         deep: true,
       },
       jobYearsBind: {
         handler(newVal) {
-          dimJobYearsBind.filter(newVal.value);
+          if (newVal.value == "All") {
+            dimJobYearsBind.filter(null);
+          } else {
+            dimJobYearsBind.filter(newVal.value);
+          }
           this.refreshStatistics();
         },
         deep: true,
       },
       gender: {
         handler(newVal) {
-          dimGender.filter(newVal.value);
+          if (newVal.value == "All") {
+            dimGender.filter(null);
+          } else {
+            dimGender.filter(newVal.value);
+          }
           this.refreshStatistics();
         },
         deep: true,
       },
       cluster: {
         handler(newVal) {
-          dimCluster.filter(newVal.value);
+          if (newVal.value == "All") {
+            dimCluster.filter(null);
+          } else {
+            dimCluster.filter(newVal.value);
+          }
           this.refreshStatistics();
         },
         deep: true,
@@ -229,6 +253,11 @@
         };
         return parsedRow;
       },
+      /*       fillStateVariable(stateVar, stateVarOptions) {
+        stateVar.options.push(null);
+        stateVar.options.push(stateVarOptions);
+        stateVar.value = stateVar.options[0];
+      }, */
       refreshStatistics() {
         this.numEmployee = cf
           .groupAll()

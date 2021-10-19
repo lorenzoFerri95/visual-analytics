@@ -15,12 +15,7 @@
             v-bind:key="key"
             v-bind:value="val"
           >
-            <div v-if="val == null">
-              All
-            </div>
-            <div v-else>
-              {{ val }}
-            </div>
+            {{ val }}
           </option>
         </select>
       </div>
@@ -38,19 +33,14 @@
             v-bind:key="key"
             v-bind:value="val"
           >
-            <div v-if="val == null">
-              All
-            </div>
-            <div v-else>
-              {{ val }}
-            </div>
+            {{ val }}
           </option>
         </select>
       </div>
     </div>
 
     <!-- RADIOS -->
-    <div class="row align-items-end justify-content-center">
+    <div class="row justify-content-center">
       <div class="col-auto">
         <p>Age range</p>
         <div class="input-group">
@@ -69,12 +59,7 @@
               autocomplete="off"
             />
             <label :for="`age-radio-${key}`" class="btn btn-outline-secondary">
-              <div v-if="val == null">
-                All
-              </div>
-              <div v-else>
-                {{ val }}
-              </div>
+              {{ val }}
             </label>
           </div>
         </div>
@@ -101,12 +86,7 @@
               :for="`gender-radio-${key}`"
               class="btn btn-outline-secondary"
             >
-              <div v-if="val == null">
-                All
-              </div>
-              <div v-else>
-                {{ val }}
-              </div>
+              {{ val }}
             </label>
           </div>
         </div>
@@ -133,12 +113,7 @@
               :for="`cluster-radio-${key}`"
               class="btn btn-outline-secondary"
             >
-              <div v-if="val == null">
-                All
-              </div>
-              <div v-else>
-                {{ val }}
-              </div>
+              {{ val }}
             </label>
           </div>
         </div>
