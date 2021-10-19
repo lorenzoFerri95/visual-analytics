@@ -6,7 +6,7 @@
         <h3>mini-challenge 1</h3>
       </div>
     </div>
-    <div class="row ms-5">
+    <div class="row">
       <Dashboard />
     </div>
   </div>

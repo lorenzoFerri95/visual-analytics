@@ -1,45 +1,59 @@
 <template>
   <form>
+    <!-- SELECTIONS -->
     <div class="row justify-content-center mb-4">
-      <div class="col-4">
+      <div class="col-auto">
         <label for="jobType-select">Job type</label>
         <select
           id="jobType-select"
           v-model="jobType.value"
           :options="jobType.options"
           class="form-select"
-          aria-label="Default select example"
         >
-          <option :value="null">All</option>
           <option
             v-for="(val, key) in jobType.options"
             v-bind:key="key"
             v-bind:value="val"
-            >{{ val }}</option
           >
+            <div v-if="val == null">
+              All
+            </div>
+            <div v-else>
+              {{ val }}
+            </div>
+          </option>
+        </select>
+      </div>
+
+      <div class="col-auto">
+        <label for="yearJob-select">Years in current job</label>
+        <select
+          id="yearJob-select"
+          v-model="jobYearsBind.value"
+          :options="jobYearsBind.options"
+          class="form-select"
+        >
+          <option
+            v-for="(val, key) in jobYearsBind.options"
+            v-bind:key="key"
+            v-bind:value="val"
+          >
+            <div v-if="val == null">
+              All
+            </div>
+            <div v-else>
+              {{ val }}
+            </div>
+          </option>
         </select>
       </div>
     </div>
 
+    <!-- RADIOS -->
     <div class="row align-items-end justify-content-center">
       <div class="col-auto">
         <p>Age range</p>
         <div class="input-group">
-          <div>
-            <input
-              id="age-radio-all"
-              v-model="ageBind.value"
-              name="options-age"
-              :value="null"
-              type="radio"
-              class="btn-check"
-              autocomplete="off"
-            />
-            <label for="age-radio-all" class="btn btn-outline-secondary"
-              >All</label
-            >
-          </div>
-
           <div
             v-for="(val, key) in ageBind.options"
             v-bind:key="key"
@@ -54,51 +68,14 @@
               class="btn-check"
               autocomplete="off"
             />
-            <label
-              :for="`age-radio-${key}`"
-              class="btn btn-outline-secondary"
-              >{{ val }}</label
-            >
-          </div>
-        </div>
-      </div>
-
-      <div class="col-auto">
-        <p>Years in current job</p>
-        <div class="input-group">
-          <div>
-            <input
-              id="yearJob-radio-all"
-              v-model="jobYearsBind.value"
-              name="options-jobYearsBind"
-              :value="null"
-              type="radio"
-              class="btn-check"
-              autocomplete="off"
-            />
-            <label for="yearJob-radio-all" class="btn btn-outline-secondary"
-              >All</label
-            >
-          </div>
-          <div
-            v-for="(val, key) in jobYearsBind.options"
-            v-bind:key="key"
-            v-bind:value="val"
-          >
-            <input
-              :id="`yearJob-radio-${key}`"
-              v-model="jobYearsBind.value"
-              name="options-jobYearsBind"
-              :value="val"
-              type="radio"
-              class="btn-check"
-              autocomplete="off"
-            />
-            <label
-              :for="`yearJob-radio-${key}`"
-              class="btn btn-outline-secondary"
-              >{{ val }}</label
-            >
+            <label :for="`age-radio-${key}`" class="btn btn-outline-secondary">
+              <div v-if="val == null">
+                All
+              </div>
+              <div v-else>
+                {{ val }}
+              </div>
+            </label>
           </div>
         </div>
       </div>
@@ -106,20 +83,6 @@
       <div class="col-auto">
         <p>Gender</p>
         <div class="input-group">
-          <div>
-            <input
-              id="gender-radio-all"
-              v-model="gender.value"
-              name="options-gender"
-              :value="null"
-              type="radio"
-              class="btn-check"
-              autocomplete="off"
-            />
-            <label for="gender-radio-all" class="btn btn-outline-secondary"
-              >All</label
-            >
-          </div>
           <div
             v-for="(val, key) in gender.options"
             v-bind:key="key"
@@ -137,8 +100,14 @@
             <label
               :for="`gender-radio-${key}`"
               class="btn btn-outline-secondary"
-              >{{ val }}</label
             >
+              <div v-if="val == null">
+                All
+              </div>
+              <div v-else>
+                {{ val }}
+              </div>
+            </label>
           </div>
         </div>
       </div>
@@ -146,20 +115,6 @@
       <div class="col-auto">
         <p>Cluster</p>
         <div class="input-group">
-          <div>
-            <input
-              id="cluster-radio-all"
-              v-model="cluster.value"
-              name="options-cluster"
-              :value="null"
-              type="radio"
-              class="btn-check"
-              autocomplete="off"
-            />
-            <label for="cluster-radio-all" class="btn btn-outline-secondary"
-              >All</label
-            >
-          </div>
           <div
             v-for="(val, key) in cluster.options"
             v-bind:key="key"
@@ -177,8 +132,14 @@
             <label
               :for="`cluster-radio-${key}`"
               class="btn btn-outline-secondary"
-              >{{ val }}</label
             >
+              <div v-if="val == null">
+                All
+              </div>
+              <div v-else>
+                {{ val }}
+              </div>
+            </label>
           </div>
         </div>
       </div>
