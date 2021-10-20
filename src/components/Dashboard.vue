@@ -11,7 +11,7 @@
       />
     </div>
 
-    <div class="row justify-content-start ms-5">
+    <div class="row justify-content-start ms-4 mb-4">
       <div class="col-auto overflow-auto" id="cards-scrollbar">
         <h5 class="header">Statistics</h5>
 
@@ -41,32 +41,24 @@
             <BaseCard header="Counter 6" :text="numEmployee" />
           </div>
         </div>
-
-        <div class="row justify-content-center mb-4">
-          <div class="col-auto">
-            <BaseCard header="Counter 5" :text="numEmployee" />
-          </div>
-          <div class="col-auto">
-            <BaseCard header="Counter 6" :text="numEmployee" />
-          </div>
-        </div>
       </div>
 
       <div class="col-8">
         <h5 class="header">Bar Charts</h5>
-        <div class="row row justify-content-start ms-5">
-          <div class="col-auto">
+        <div class="row row justify-content-start ms-5 mb-0 pb-0">
+          <div class="col-auto ms-0 me-0 ps-0 pe-0">
+            <BarChart plotId="Job type" :aggregatedData="jobTypeData" />
+          </div>
+          <div class="col-auto ms-0 me-0 ps-0 pe-0">
             <BarChart
-              plotId="bc1"
-              :labels="['a', 'b', 'c']"
-              :frequencies="[1, 2, 3]"
+              plotId="Years in current job"
+              :aggregatedData="jobYearsBindData"
             />
           </div>
-          <div class="col-auto">
+          <div class="col-auto ms-0 me-0 ps-0 pe-0">
             <BarChart
-              plotId="bc2"
-              :labels="['k', 'p', 'g']"
-              :frequencies="[5, 6, 7]"
+              plotId="Years in current job"
+              :aggregatedData="jobYearsBindData"
             />
           </div>
         </div>
@@ -131,6 +123,8 @@
         },
         /* variabili di stato per i dati da inserire nella pagina web */
         numEmployee: 0,
+        jobTypeData: [],
+        jobYearsBindData: [],
       };
     },
     mounted: function() {
@@ -196,6 +190,8 @@
               .map(row => row.key)
           );
           this.cluster.value = this.cluster.options[0];
+
+          this.refreshDashboard();
         });
 
       fetch("./static/data/nodes.json")
@@ -218,7 +214,7 @@
           } else {
             dimJobType.filter(newVal.value);
           }
-          this.refreshStatistics();
+          this.refreshDashboard();
         },
         deep: true,
       },
@@ -229,7 +225,7 @@
           } else {
             dimAgeBind.filter(newVal.value);
           }
-          this.refreshStatistics();
+          this.refreshDashboard();
         },
         deep: true,
       },
@@ -240,7 +236,7 @@
           } else {
             dimJobYearsBind.filter(newVal.value);
           }
-          this.refreshStatistics();
+          this.refreshDashboard();
         },
         deep: true,
       },
@@ -251,7 +247,7 @@
           } else {
             dimGender.filter(newVal.value);
           }
-          this.refreshStatistics();
+          this.refreshDashboard();
         },
         deep: true,
       },
@@ -262,7 +258,7 @@
           } else {
             dimCluster.filter(newVal.value);
           }
-          this.refreshStatistics();
+          this.refreshDashboard();
         },
         deep: true,
       },
@@ -281,11 +277,21 @@
         };
         return parsedRow;
       },
-      refreshStatistics() {
+      refreshDashboard() {
         this.numEmployee = cf
           .groupAll()
           .reduceCount()
           .value();
+
+        this.jobTypeData = dimJobType
+          .group()
+          .reduceCount()
+          .all();
+
+        this.jobYearsBindData = dimJobYearsBind
+          .group()
+          .reduceCount()
+          .all();
       },
     },
   };
@@ -297,7 +303,7 @@
     margin-bottom: 10px;
     padding-bottom: 10px;
   }
-  #cards-scrollbar {
+ /*  #cards-scrollbar {
     height: 500px;
-  }
+  } */
 </style>

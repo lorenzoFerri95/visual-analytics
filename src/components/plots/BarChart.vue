@@ -1,80 +1,100 @@
 <template>
-  <div :id="plotId"></div>
+  <Plotly
+    :id="plotId"
+    :data="plotData"
+    :layout="layout"
+    :display-mode-bar="false"
+  ></Plotly>
 </template>
 
 <script>
-  import Plotly from "plotly.js-dist";
+  import { Plotly } from "vue-plotly";
 
   export default {
     name: "BarChart",
+    components: {
+      Plotly,
+    },
     props: {
       plotId: { required: true, type: String },
-      labels: { required: true, type: Array },
-      frequencies: { required: true, type: Array },
+      aggregatedData: { required: true, type: Array },
     },
     data: function() {
       return {
-        x: this.labels,
-        y: this.frequencies,
+        plotData: [
+          {
+            x: this.aggregatedData.map(row => row.key),
+            y: this.aggregatedData.map(row => row.value),
+            type: "bar",
+          },
+        ],
+        layout: {
+          title: this.plotId,
+          xaxis: {
+            tickfont: {
+              size: 10,
+              color: "#000",
+            },
+            tickangle: 45,
+            showgrid: true,
+            zeroline: false,
+            showline: false,
+            gridcolor: "#bdbdbd",
+            gridwidth: 1,
+            zerolinecolor: "#969696",
+            zerolinewidth: 1,
+            linecolor: "#636363",
+            linewidth: 1,
+          },
+          yaxis: {
+            title: "",
+            titlefont: {
+              size: 12,
+              color: "#000",
+            },
+            showgrid: true,
+            zeroline: false,
+            showline: false,
+            gridcolor: "#bdbdbd",
+            gridwidth: 1,
+            zerolinecolor: "#969696",
+            zerolinewidth: 1,
+            linecolor: "#636363",
+            linewidth: 1,
+          },
+          legend: {
+            x: 0,
+            y: 1.0,
+            bgcolor: "rgba(255, 255, 255, 0)",
+            bordercolor: "rgba(255, 255, 255, 0)",
+          },
+          barmode: "group",
+          bargap: 0.4,
+          bargroupgap: 0,
+          autosize: false,
+          width: 270,
+          height: 390,
+          margin: {
+            l: 30,
+            r: 40,
+            b: 120,
+            t: 80,
+            pad: 3,
+          },
+          paper_bgcolor: "#F8F9Fa",
+          plot_bgcolor: "#ebebeb",
+          showlegend: false,
+        },
+        config: {
+          displayModeBar: false,
+        },
       };
     },
-    mounted: function() {
-      const data = [
-        {
-          x: this.x,
-          y: this.y,
-          type: "bar",
-        },
-      ];
-
-      const layout = {
-        title: "US Export of Plastic Scrap",
-        xaxis: {
-          tickfont: {
-            size: 14,
-            color: "rgb(107, 107, 107)",
-          },
-        },
-        yaxis: {
-          title: "USD (millions)",
-          titlefont: {
-            size: 16,
-            color: "rgb(107, 107, 107)",
-          },
-          tickfont: {
-            size: 14,
-            color: "rgb(107, 107, 107)",
-          },
-        },
-        legend: {
-          x: 0,
-          y: 1.0,
-          bgcolor: "rgba(255, 255, 255, 0)",
-          bordercolor: "rgba(255, 255, 255, 0)",
-        },
-        barmode: "group",
-        bargap: 0.15,
-        bargroupgap: 0.1,
-        autosize: false,
-        width: 250,
-        height: 350,
-        margin: {
-          l: 50,
-          r: 50,
-          b: 100,
-          t: 100,
-          pad: 4,
-        },
-        paper_bgcolor: "white",
-        plot_bgcolor: "white",
-        showlegend: true,
-      };
-
-      const config = {
-        displayModeBar: false,
-      };
-
-      Plotly.newPlot(this.plotId, data, layout, config);
+    watch: {
+      aggregatedData: function(newData) {
+        this.plotData[0].x = newData.map(row => row.key);
+        this.plotData[0].y = newData.map(row => row.value);
+      },
     },
   };
 </script>
