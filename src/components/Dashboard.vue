@@ -11,16 +11,45 @@
       />
     </div>
 
-    <div class="row justify-content-start ms-4">
+    <div class="row justify-content-start ms-5">
       <div class="col-auto overflow-auto" id="cards-scrollbar">
         <h5 class="header">Statistics</h5>
-        <BaseCard header="# of Employee" :text="numEmployee" />
-        <BaseCard header="Counter 2" :text="count" />
-        <BaseCard header="Counter 3" :text="count" />
-        <BaseCard header="Counter 4" :text="count" />
-        <BaseCard header="Counter 5" :text="count" />
-        <BaseCard header="Counter 6" :text="count" />
-        <BaseCard header="Counter 7" :text="count" />
+
+        <div class="row justify-content-center mb-4">
+          <div class="col-auto">
+            <BaseCard header="# of Employee" :text="numEmployee" />
+          </div>
+          <div class="col-auto">
+            <BaseCard header="Counter 2" :text="numEmployee" />
+          </div>
+        </div>
+
+        <div class="row justify-content-center mb-4">
+          <div class="col-auto">
+            <BaseCard header="Counter 3" :text="numEmployee" />
+          </div>
+          <div class="col-auto">
+            <BaseCard header="Counter 4" :text="numEmployee" />
+          </div>
+        </div>
+
+        <div class="row justify-content-center mb-4">
+          <div class="col-auto">
+            <BaseCard header="Counter 5" :text="numEmployee" />
+          </div>
+          <div class="col-auto">
+            <BaseCard header="Counter 6" :text="numEmployee" />
+          </div>
+        </div>
+
+        <div class="row justify-content-center mb-4">
+          <div class="col-auto">
+            <BaseCard header="Counter 5" :text="numEmployee" />
+          </div>
+          <div class="col-auto">
+            <BaseCard header="Counter 6" :text="numEmployee" />
+          </div>
+        </div>
       </div>
 
       <div class="col-8">
@@ -102,7 +131,6 @@
         },
         /* variabili di stato per i dati da inserire nella pagina web */
         numEmployee: 0,
-        count: 0,
       };
     },
     mounted: function() {
@@ -253,11 +281,6 @@
         };
         return parsedRow;
       },
-      /*       fillStateVariable(stateVar, stateVarOptions) {
-        stateVar.options.push(null);
-        stateVar.options.push(stateVarOptions);
-        stateVar.value = stateVar.options[0];
-      }, */
       refreshStatistics() {
         this.numEmployee = cf
           .groupAll()

@@ -25,6 +25,6 @@
     font-size: 25px;
   }
   .card {
-    max-width: 18rem;
+    max-width: 150px;
   }
 </style>
