@@ -25,19 +25,25 @@
         promises.push(fetch(it));
       });
 
+      /*       Promise.all(promises)
+        .then(responses => {
+          let res = [];
+          for (let response of responses) {
+            res.push(response.json());
+          }
+          return res;
+        })
+        .then(data => console.log(data)); */
+
       Promise.all(promises)
         .then(responses => {
           return [responses[0].json(), responses[1].json()];
         })
         .then(data => {
-          data[0].then(data0 => {
-            this.nodes = data0;
-            data[1].then(data1 => {
-              this.edges = data1;
+          data[0].then(data0 => (this.nodes = data0));
+          data[1].then(data1 => (this.edges = data1));
 
-              this.ForceGraph({ nodes: this.nodes, edges: this.edges });
-            });
-          });
+          this.ForceGraph({ nodes: this.nodes, edges: this.edges });
         });
     },
     methods: {

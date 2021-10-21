@@ -98,8 +98,6 @@
       return {
         /* variabili di stato per i dati fetchati */
         employeeData: [],
-        nodes: [],
-        edges: [],
         /* variabili di stato per le opzioni selezionabili dall'utente */
         ageBind: {
           value: "",
@@ -194,17 +192,6 @@
           this.refreshDashboard();
         });
 
-      fetch("./static/data/nodes.json")
-        .then(response => response.json())
-        .then(data => {
-          this.nodes = data;
-        });
-
-      fetch("./static/data/edges.json")
-        .then(response => response.json())
-        .then(data => {
-          this.edges = data;
-        });
     },
     watch: {
       jobType: {
