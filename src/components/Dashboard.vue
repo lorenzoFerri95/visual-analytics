@@ -20,13 +20,13 @@
             <BaseCard header="# of Employee" :text="numEmployee" />
           </div>
           <div class="col-auto">
-            <BaseCard header="Counter 2" :text="numEmployee" />
+            <BaseCard header="avg Age" :text="avgAge" />
           </div>
         </div>
 
         <div class="row justify-content-center mb-4">
           <div class="col-auto">
-            <BaseCard header="Counter 3" :text="numEmployee" />
+            <BaseCard header="avg Job Years" :text="avgJobYears" />
           </div>
           <div class="col-auto">
             <BaseCard header="Counter 4" :text="numEmployee" />
@@ -56,10 +56,7 @@
             />
           </div>
           <div class="col-auto ms-0 me-0 ps-0 pe-0">
-            <BarChart
-              plotId="Years in current job"
-              :aggregatedData="jobYearsBindData"
-            />
+            <BarChart plotId="Age Rage" :aggregatedData="ageBindData" />
           </div>
         </div>
       </div>
@@ -121,8 +118,11 @@
         },
         /* variabili di stato per i dati da inserire nella pagina web */
         numEmployee: 0,
+        avgAge: 0,
+        avgJobYears: 0,
         jobTypeData: [],
         jobYearsBindData: [],
+        ageBindData: [],
       };
     },
     mounted: function() {
@@ -191,7 +191,6 @@
 
           this.refreshDashboard();
         });
-
     },
     watch: {
       jobType: {
@@ -265,10 +264,32 @@
         return parsedRow;
       },
       refreshDashboard() {
-        this.numEmployee = cf
+        const countRecords = cf
           .groupAll()
           .reduceCount()
           .value();
+
+        this.numEmployee = countRecords;
+
+        this.avgAge =
+          Math.round(
+            (100 *
+              cf
+                .groupAll()
+                .reduceSum(row => row.Age)
+                .value()) /
+              countRecords
+          ) / 100;
+
+        this.avgJobYears =
+          Math.round(
+            (100 *
+              cf
+                .groupAll()
+                .reduceSum(row => row.JobYears)
+                .value()) /
+              countRecords
+          ) / 100;
 
         this.jobTypeData = dimJobType
           .group()
@@ -276,6 +297,11 @@
           .all();
 
         this.jobYearsBindData = dimJobYearsBind
+          .group()
+          .reduceCount()
+          .all();
+
+        this.ageBindData = dimAgeBind
           .group()
           .reduceCount()
           .all();
@@ -290,7 +316,7 @@
     margin-bottom: 10px;
     padding-bottom: 10px;
   }
- /*  #cards-scrollbar {
+  /*  #cards-scrollbar {
     height: 500px;
   } */
 </style>
