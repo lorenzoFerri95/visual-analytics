@@ -1,9 +1,8 @@
 <template>
-  <div id="my_dataviz"></div>
+  <div id="network"></div>
 </template>
 
 <script>
-  /* const d3 = require("d3"); */
   import * as d3 from "d3";
 
   export default {
@@ -22,158 +21,121 @@
 
       let promises = [];
 
-      resources.forEach(it => {
-        promises.push(d3.json(it));
+      resources.forEach(url => {
+        promises.push(d3.json(url));
       });
 
-      Promise.all(promises).then(responses => {
-        console.log(responses[0]);
-        console.log(responses[1]);
-      })
-
-
-
-/*       Promise.all(promises)
+      Promise.all(promises)
         .then(responses => {
-          return [responses[0].json(), responses[1].json()];
-        })
-        .then(data => {
-          data[0].then(data0 => {
-            this.nodes = data0;
-            data[1].then(data1 => {
-              this.edges = data1;
+          this.nodes = responses[0];
+          this.edges = responses[1];
 
-              console.log(this.nodes);
-              console.log(this.edges);
-
-              this.createNetwork(this.nodes, this.edges);
-            });
-          });
-        }); */
+          this.createNetwork(this.nodes, this.edges);
+        });
     },
     methods: {
       createNetwork(nodes, edges) {
-        const width = 960,
+        const width = 1200,
           height = 500;
 
         const svg = d3
-          .select("#my_dataviz")
+          .select("#network")
           .append("svg")
           .attr("width", width)
           .attr("height", height);
 
-        /*         const force = d3.layout
-          .force()
-          .gravity(0.05)
-          .distance(100)
-          .charge(-100)
-          .size([width, height]);
-
-        force
-          .nodes(nodes)
-          .links(edges)
-          .start(); */
-
-        /* var link = svg
-          .selectAll(".link")
-          .data(edges)
-          .enter()
-          .append("line")
-          .attr("class", "link")
-          .style("stroke-width", function(d) {
-            return Math.sqrt(d.weight);
-          }); */
-
+        // Initialize the nodes
         const node = svg
-          .selectAll("g.node") //text
+          .selectAll("g.nodes")
           .data(nodes)
           .join("g")
-          .attr("class", "node"); //text
-        /* .call(force.drag); */
+          .attr("class", "nodes")
+          .append("text")
+          .attr("dx", width / 2)
+          .attr("dy", height / 2)
+          .text(d => {
+            return d.Id;
+          });
 
-        /* node.append("circle").attr("r", "5"); */
+        const link = svg
+          .selectAll("line")
+          .data(edges)
+          .join("line")
+          .attr("class", "line")
+          .style("stroke", "#aaa");
 
-        node
+        const simulation = d3
+          .forceSimulation()
+          .nodes(nodes) // Force algorithm is applied to nodes
+          .force(
+            "link",
+            d3
+              .forceLink() // This force provides links between nodes
+              .id(d => {
+                return d.Id;
+              }) // This provide  the id of a node
+              .links(edges) // and this the list of links
+          )
+          .force(
+            "charge",
+            d3
+              .forceManyBody()
+              .strength(-400)
+              .theta(0.8)
+              .distanceMax(150)
+          ) // This adds repulsion between nodes. Play with the -400 for the repulsion strength
+          .force(
+            "collide",
+            d3
+              .forceCollide()
+              /* .radius(d => 40) */
+              .iterations(2)
+          )
+          .force("center", d3.forceCenter(width / 2, height / 2)); // This force attracts nodes to the center of the svg area
+
+        simulation.on("tick", ticked);
+
+        // This function is run at each iteration of the force algorithm, updating the nodes position.
+        function ticked() {
+          link
+            .attr("x1", function(d) {
+              return d.Source.x;
+            })
+            .attr("y1", function(d) {
+              return d.Source.y;
+            })
+            .attr("x2", function(d) {
+              return d.Target.x;
+            })
+            .attr("y2", function(d) {
+              return d.Target.y;
+            });
+
+          node
+            .attr("r", 16)
+            .style("fill", "#efefef")
+            .style("stroke", "#424242")
+            .style("stroke-width", "1px")
+            .attr("cx", function(d) {
+              return d.x + 6;
+            })
+            .attr("cy", function(d) {
+              return d.y - 6;
+            });
+        }
+
+        ////
+
+        /*         node
           .append("text")
           .attr("dx", 250)
           .attr("dy", 250)
           .text(d => {
             return d.Id;
-          })
-          .call(this.drag(simulation));
-
-        const simulation = d3
-          .forceSimulation(nodes)
-          .force("charge", d3.forceManyBody())
-          .force("link", d3.forceLink(edges))
-          .force("center", d3.forceCenter(width / 2, height / 2));
-        /* 
-        simulation
-          .nodes(nodes)
-          .links(edges)
-          .start(); */
-
-        /* force.on("tick", function() {
-          link
-            .attr("x1", function(d) {
-              return d.source.x;
-            })
-            .attr("y1", function(d) {
-              return d.source.y;
-            })
-            .attr("x2", function(d) {
-              return d.target.x;
-            })
-            .attr("y2", function(d) {
-              return d.target.y;
-            });
-
-          node.attr("transform", function(d) {
-            return "translate(" + d.x + "," + d.y + ")";
-          });
-        });*/
-      },
-      drag(simulation) {
-        function dragstarted(event) {
-          if (!event.active) simulation.alphaTarget(0.3).restart();
-          event.subject.fx = event.subject.x;
-          event.subject.fy = event.subject.y;
-        }
-
-        function dragged(event) {
-          event.subject.fx = event.x;
-          event.subject.fy = event.y;
-        }
-
-        function dragended(event) {
-          if (!event.active) simulation.alphaTarget(0);
-          event.subject.fx = null;
-          event.subject.fy = null;
-        }
-
-        return d3
-          .drag()
-          .on("start", dragstarted)
-          .on("drag", dragged)
-          .on("end", dragended);
+          }); */
       },
     },
   };
 </script>
 
-<style scoped>
-  .link {
-    stroke: #aaa;
-  }
-
-  .node text {
-    stroke: #333;
-    cursos: pointer;
-  }
-
-  .node circle {
-    stroke: #fff;
-    stroke-width: 3px;
-    fill: #555;
-  }
-</style>
+<style scoped></style>
