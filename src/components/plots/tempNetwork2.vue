@@ -1,172 +1,144 @@
 <template>
-  <div id="my_dataviz"></div>
+  <div>
+    <div class="controls">
+      <div>
+        <label>Adjust width</label>
+        <input type="range" v-model="settings.width" min="0" max="100" />
+      </div>
+    </div>
+    <div id="network" :style="{ width: settings.width + '%' }"></div>
+  </div>
 </template>
 
 <script>
-  /* const d3 = require("d3"); */
   import * as d3 from "d3";
 
   export default {
     name: "Network",
     data: function() {
       return {
-        nodes: [],
-        edges: [],
+        /* variabili di stato per i dati fetchati */
+        networkData: null,
+        /* variabili di stato */
+        simulation: null,
+        settings: {
+          strokeColor: "#29B5FF",
+          width: 100,
+          svgWigth: 960,
+          svgHeight: 600,
+        },
       };
     },
     mounted: function() {
-      const resources = [
-        "./static/data/nodes.json",
-        "./static/data/edges.json",
-      ];
+      fetch("./static/data/network.json")
+        .then(response => response.json())
+        .then(data => {
+          console.log(data);
+          this.networkData = data; /* .map(row => this.parseNetworkRow(row)); */
 
-      let promises = [];
-
-      resources.forEach(url => {
-        promises.push(d3.json(url));
-      });
-
-      Promise.all(promises)
-        .then(responses => {
-          /* console.log(responses[0]);
-          console.log(responses[1]); */
-
-          this.nodes = responses[0]; //.map(row => this.parseNodesRow(row));
-          this.edges = responses[1]; //.map(row => this.parseEdgesRow(row));
-
-          /* console.log(this.nodes);
-          console.log(this.edges); */
-
-          this.createNetwork(this.nodes, this.edges);
-        })
-        .catch(err => {
-          console.log(err);
+          this.simulation = d3
+            .forceSimulation(this.networkData.nodes)
+            .force(
+              "link",
+              d3
+                .forceLink(this.networkData.links)
+                .distance(100)
+                .strength(0.1)
+            )
+            .force("charge", d3.forceManyBody())
+            .force(
+              "center",
+              d3.forceCenter(
+                this.settings.svgWigth / 2,
+                this.settings.svgHeight / 2
+              )
+            );
         });
+      console.log("mounted");
     },
+    computed: {},
     methods: {
-/*       parseNodesRow(row) {
+      parseNetworkRow(row) {
         const parsedRow = {
-          Id: row.Id,
+          FullName: row.FullName,
+          Gender: row.Gender,
+          Age: +row.Age,
+          AgeBind: row.AgeBind,
+          Cluster: +row.Cluster,
+          JobType: row.CurrentEmploymentType,
+          JobYears: +row.YearsSinceCurrentEmploymentStart,
+          JobYearsBind: row.YSCESBind,
         };
         return parsedRow;
       },
-      parseEdgesRow(row) {
-        const parsedRow = {
-          Source: row.Source,
-          Target: row.Target,
-        };
-        return parsedRow;
-      }, */
-      createNetwork(nodes) {
-        const width = 960,
-          height = 500;
-
-        const svg = d3
-          .select("#my_dataviz")
-          .append("svg")
-          .attr("width", width)
-          .attr("height", height);
-
-        /* 
-        const link = svg
-          .selectAll(".link")
-          .data(edges)
-          .enter()
-          .append("line")
-          .attr("class", "link")
-          .style("stroke-width", function(d) {
-            return Math.sqrt(d.weight);
-          }); */
-
-        /* const simulation = d3
-          .forceSimulation(nodes)
-          .force("charge", d3.forceManyBody())
-          .force("link", d3.forceLink(edges))
-          .force("center", d3.forceCenter(width / 2, height / 2)); */
-
-        const node = svg
-          .selectAll("g.node") //text
-          .data(nodes)
-          .join("g")
-          .attr("class", "node"); //text
-        /* .call(this.drag(simulation)); */
-
-        /* node.append("circle").attr("r", "5"); */
-
-        node
-          .append("text")
-          .attr("dx", 250)
-          .attr("dy", 250)
-          .text(d => {
-            return d.Id;
-          });
-
-        /* simulation
-          .nodes(nodes)
-          .links(edges)
-          .start(); */
-        /* 
-        force.on("tick", function() {
-          link
+    },
+    updated: function() {
+      this.simulation
+        .nodes(this.networkData.nodes)
+        .on("tick", function ticked() {
+          this.edges
             .attr("x1", function(d) {
-              return d.source.x;
+              return d.Source.x;
             })
             .attr("y1", function(d) {
-              return d.source.y;
+              return d.Source.y;
             })
             .attr("x2", function(d) {
-              return d.target.x;
+              return d.Target.x;
             })
             .attr("y2", function(d) {
-              return d.target.y;
+              return d.Target.y;
             });
 
-          node.attr("transform", function(d) {
-            return "translate(" + d.x + "," + d.y + ")";
-          });
-        }); */
-      },
-      drag(simulation) {
-        function dragstarted(event) {
-          if (!event.active) simulation.alphaTarget(0.3).restart();
-          event.subject.fx = event.subject.x;
-          event.subject.fy = event.subject.y;
-        }
-
-        function dragged(event) {
-          event.subject.fx = event.x;
-          event.subject.fy = event.y;
-        }
-
-        function dragended(event) {
-          if (!event.active) simulation.alphaTarget(0);
-          event.subject.fx = null;
-          event.subject.fy = null;
-        }
-
-        return d3
-          .drag()
-          .on("start", dragstarted)
-          .on("drag", dragged)
-          .on("end", dragended);
-      },
+          this.nodes
+            .attr("cx", function(d) {
+              return d.x;
+            })
+            .attr("cy", function(d) {
+              return d.y;
+            });
+        });
     },
   };
 </script>
 
 <style scoped>
-  .link {
-    stroke: #aaa;
+  body {
+    width: 100%;
+    height: 100%;
+    font-family: monospace;
   }
 
-  .node text {
-    stroke: #333;
-    cursos: pointer;
+  .controls {
+    top: 16px;
+    left: 16px;
+    background: #f8f8f8;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
   }
 
-  .node circle {
+  .svg-container {
+    display: table;
+    border: 1px solid #f8f8f8;
+    box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+
+  .controls > * + * {
+    margin-top: 1rem;
+  }
+
+  label {
+    display: block;
+  }
+
+  .links line {
+    stroke: #999;
+    stroke-opacity: 0.6;
+  }
+
+  .nodes circle {
     stroke: #fff;
-    stroke-width: 3px;
-    fill: #555;
+    stroke-width: 1.5px;
   }
 </style>

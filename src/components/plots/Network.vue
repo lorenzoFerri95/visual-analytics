@@ -1,5 +1,13 @@
 <template>
-  <div id="network"></div>
+  <div>
+    <div class="controls">
+      <div>
+        <label>Adjust width</label>
+        <input type="range" v-model="settings.widthPerc" min="0" max="100" />
+      </div>
+    </div>
+    <div id="network" :style="{ width: settings.widthPerc + '%' }"></div>
+  </div>
 </template>
 
 <script>
@@ -11,6 +19,12 @@
       return {
         nodes: [],
         edges: [],
+        settings: {
+          strokeColor: "#29B5FF",
+          widthPerc: 100,
+          svgWidth: 960,
+          svgHeight: 600,
+        },
       };
     },
     mounted: function() {
@@ -25,18 +39,15 @@
         promises.push(d3.json(url));
       });
 
-      Promise.all(promises)
-        .then(responses => {
-          this.nodes = responses[0];
-          this.edges = responses[1];
+      Promise.all(promises).then(responses => {
+        this.nodes = responses[0];
+        this.edges = responses[1];
 
-          this.createNetwork(this.nodes, this.edges);
-        });
+        this.createNetwork(this.nodes, this.edges, this.settings.svgWidth, this.settings.svgHeight);
+      });
     },
     methods: {
-      createNetwork(nodes, edges) {
-        const width = 1200,
-          height = 500;
+      createNetwork(nodes, edges, width, height) {
 
         const svg = d3
           .select("#network")
@@ -138,4 +149,13 @@
   };
 </script>
 
-<style scoped></style>
+<style scoped>
+.controls {
+    top: 16px;
+    left: 16px;
+    background: #f8f8f8;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+  }
+  </style>
