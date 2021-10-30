@@ -1,0 +1,10 @@
+#card-text {
+  text-align: center;
+  font-size: 25px;
+}
+.card {
+  max-width: 150px;
+}
+/*  #cards-scrollbar {
+    height: 500px;
+  } */

@@ -15,7 +15,8 @@
     "d3": "^7.1.1",
     "d3-force": "^3.0.0",
     "vue": "^2.6.11",
-    "vue-plotly": "^1.1.0"
+    "vue-plotly": "^1.1.0",
+    "vue-router": "^3.5.3"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",

@@ -26,6 +26,14 @@
             x: this.aggregatedData.map(row => row.key),
             y: this.aggregatedData.map(row => row.value),
             type: "bar",
+            marker: {
+              /* color: "#7d7d7d", */
+              opacity: 0.9,
+              line: {
+                color: "white",
+                width: 1,
+              },
+            },
           },
         ],
         layout: {

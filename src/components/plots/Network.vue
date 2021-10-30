@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="controls">
+    <div class="network-controls">
       <div>
         <label>Adjust width</label>
         <input type="range" v-model="settings.widthPerc" min="0" max="100" />
@@ -43,12 +43,16 @@
         this.nodes = responses[0];
         this.edges = responses[1];
 
-        this.createNetwork(this.nodes, this.edges, this.settings.svgWidth, this.settings.svgHeight);
+        /* this.createNetwork(
+          this.nodes,
+          this.edges,
+          this.settings.svgWidth,
+          this.settings.svgHeight
+        ); */
       });
     },
     methods: {
       createNetwork(nodes, edges, width, height) {
-
         const svg = d3
           .select("#network")
           .append("svg")
@@ -149,13 +153,4 @@
   };
 </script>
 
-<style scoped>
-.controls {
-    top: 16px;
-    left: 16px;
-    background: #f8f8f8;
-    padding: 0.5rem;
-    display: flex;
-    flex-direction: column;
-  }
-  </style>
+<style scoped></style>

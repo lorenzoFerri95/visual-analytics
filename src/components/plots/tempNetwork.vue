@@ -1,5 +1,5 @@
 <template>
-  <div id="my_dataviz"></div>
+  <div id="network"></div>
 </template>
 
 <script>
@@ -21,48 +21,14 @@
 
       let promises = [];
 
-      resources.forEach(it => {
-        promises.push(fetch(it));
+      resources.forEach(url => {
+        promises.push(d3.json(url));
       });
 
-      /*       Promise.all(promises)
-        .then(responses => {
-          let res = [];
-          for (let response of responses) {
-            res.push(response.json());
-          }
-          return res;
-        })
-        .then(data => console.log(data)); */
-
-      Promise.all(promises)
-        .then(responses => {
-          return [responses[0].json(), responses[1].json()];
-        })
-        .then(data => {
-          data[0].then(data0 => {
-            this.nodes = data0;
-            data[1].then(data1 => {
-              this.edges = data1;
-
-              console.log(this.nodes);
-              console.log(this.edges);
-
-              this.ForceGraph({ nodes: this.nodes, edges: this.edges });
-            });
-          });
-        });
-
-      /*       Promise.all(promises)
-        .then(responses => {
-          return [responses[0].json(), responses[1].json()];
-        })
-        .then(data => {
-          data[0].then(data0 => (this.nodes = data0));
-          data[1].then(data1 => (this.edges = data1));
-
-          this.ForceGraph({ nodes: this.nodes, edges: this.edges });
-        }); */
+      Promise.all(promises).then(responses => {
+        this.nodes = responses[0];
+        this.edges = responses[1];
+      });
     },
     methods: {
       ForceGraph(
@@ -127,7 +93,7 @@
           .on("tick", ticked);
 
         const svg = d3
-          .select("#my_dataviz")
+          .select("#network")
           .append("svg")
           .attr("width", width)
           .attr("height", height)

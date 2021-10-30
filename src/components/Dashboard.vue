@@ -61,19 +61,14 @@
         </div>
       </div>
     </div>
-
-    <div class="row justify-content-center">
-      <h5 class="header">Network</h5>
-      <Network />
-    </div>
   </div>
 </template>
 
 <script>
-  import Network from "@/components/plots/Network.vue";
-  import BarChart from "@/components/plots/BarChart.vue";
-  import BaseCard from "@/components/base/BaseCard.vue";
   import TheForm from "@/components/TheForm.vue";
+  import BaseCard from "@/components/base/BaseCard.vue";
+  import BarChart from "@/components/plots/BarChart.vue";
+
   import crossfilter from "crossfilter2";
 
   let cf;
@@ -86,7 +81,6 @@
   export default {
     name: "Dashboard",
     components: {
-      Network,
       BarChart,
       BaseCard,
       TheForm,
@@ -95,7 +89,7 @@
       return {
         /* variabili di stato per i dati fetchati */
         employeeData: [],
-        /* variabili di stato per le opzioni selezionabili dall'utente */
+        /* variabili di stato per le opzioni selezionabili dall'utente nei filtri */
         ageBind: {
           value: "",
           options: [],
@@ -310,13 +304,4 @@
   };
 </script>
 
-<style scoped>
-  .header {
-    text-align: center;
-    margin-bottom: 10px;
-    padding-bottom: 10px;
-  }
-  /*  #cards-scrollbar {
-    height: 500px;
-  } */
-</style>
+<style scoped></style>

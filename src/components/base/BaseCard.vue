@@ -19,12 +19,4 @@
   };
 </script>
 
-<style scoped>
-  #card-text {
-    text-align: center;
-    font-size: 25px;
-  }
-  .card {
-    max-width: 150px;
-  }
-</style>
+<style scoped></style>

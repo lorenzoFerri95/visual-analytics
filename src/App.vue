@@ -11,19 +11,29 @@
       <div class="row justify-content-center mt-4 mb-4">
         <Dashboard />
       </div>
+      <div class="row justify-content-center">
+        <h5 class="header">Network</h5>
+        <Network />
+      </div>
     </div>
   </div>
 </template>
 
 <script>
   import Dashboard from "@/components/Dashboard.vue";
+  import Network from "@/components/plots/Network.vue";
 
   export default {
     name: "App",
     components: {
       Dashboard,
+      Network,
     },
   };
 </script>
 
-<style scoped></style>
+<style scoped>
+  @import "./assets/styles/header.css";
+  @import "./assets/styles/card.css";
+  @import "./assets/styles/network.css";
+</style>

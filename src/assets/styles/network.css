@@ -1,0 +1,8 @@
+.network-controls {
+  top: 16px;
+  left: 16px;
+  background: #f8f8f8;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+}
