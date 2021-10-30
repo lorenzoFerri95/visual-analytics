@@ -1,5 +1,6 @@
 <template>
   <div>
+    <h5 class="header">Network</h5>
     <div class="network-controls">
       <div>
         <label>Adjust width</label>

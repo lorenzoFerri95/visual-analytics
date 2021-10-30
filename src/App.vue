@@ -1,33 +1,27 @@
 <template>
-  <div>
-    <nav class="navbar navbar-light bg-light">
-      <a href="#" class="navbar-brand ms-5">VAST Challenge 2014</a>
-      <ul class="navbar-nav me-5">
-        <li class="nav-item nav-link">mini-challenge 1</li>
-      </ul>
-    </nav>
+  <div id="app">
+    <TheNavbar />
 
     <div class="container-fluid ms-4 me-3">
       <div class="row justify-content-center mt-4 mb-4">
-        <Dashboard />
+        <router-view></router-view>
       </div>
-      <div class="row justify-content-center">
-        <h5 class="header">Network</h5>
+      <!-- <div class="row justify-content-center">
         <Network />
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
 
 <script>
-  import Dashboard from "@/components/Dashboard.vue";
-  import Network from "@/components/plots/Network.vue";
+  /* import Network from "@/components/plots/Network.vue"; */
+  import TheNavbar from "@/components/TheNavbar.vue";
 
   export default {
     name: "App",
     components: {
-      Dashboard,
-      Network,
+      TheNavbar,
+      /* Network, */
     },
   };
 </script>
