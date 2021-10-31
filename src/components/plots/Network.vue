@@ -44,12 +44,12 @@
         this.nodes = responses[0];
         this.edges = responses[1];
 
-        /* this.createNetwork(
+        this.createNetwork(
           this.nodes,
           this.edges,
           this.settings.svgWidth,
           this.settings.svgHeight
-        ); */
+        );
       });
     },
     methods: {
