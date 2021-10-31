@@ -1,20 +1,27 @@
 <template>
   <div>
-    <div class="row justify-content-center mb-5 pb-3">
-      <h5 class="header">Filters</h5>
-      <TheForm
-        :jobType="jobType"
-        :ageBind="ageBind"
-        :jobYearsBind="jobYearsBind"
-        :gender="gender"
-        :cluster="cluster"
-      />
+    <div class="row justify-content-start ms-5 mb-5 pb-3">
+      <div class="col-auto">
+        <h5 class="header">Filters</h5>
+        <TheForm
+          :jobType="jobType"
+          :ageBind="ageBind"
+          :jobYearsBind="jobYearsBind"
+          :gender="gender"
+          :cluster="cluster"
+        />
+      </div>
+      <div class="col-4 ms-4" align="center">
+        <h5 class="header">Employee Names List</h5>
+        <div class="overflow-auto" style="height: 170px; width: 300px">
+          <BaseListGroup :fullNamesList="fullNamesList" />
+        </div>
+      </div>
     </div>
 
     <div class="row justify-content-start ms-4 mb-4">
-      <div class="col-auto overflow-auto" id="cards-scrollbar">
+      <div class="col-auto">
         <h5 class="header">Statistics</h5>
-
         <div class="row justify-content-center mb-4">
           <div class="col-auto">
             <BaseCard header="# of Employee" :text="numEmployee" />
@@ -43,9 +50,9 @@
         </div>
       </div>
 
-      <div class="col-8">
+      <div class="col-8" align="center">
         <h5 class="header">Bar Charts</h5>
-        <div class="row row justify-content-start ms-5 mb-0 pb-0">
+        <div class="row justify-content-start ms-5 mb-0 pb-0">
           <div class="col-auto ms-0 me-0 ps-0 pe-0">
             <BarChart plotId="Job type" :aggregatedData="jobTypeData" />
           </div>
@@ -66,6 +73,7 @@
 
 <script>
   import TheForm from "@/components/TheForm.vue";
+  import BaseListGroup from "@/components/base/BaseListGroup.vue";
   import BaseCard from "@/components/base/BaseCard.vue";
   import BarChart from "@/components/plots/BarChart.vue";
 
@@ -84,6 +92,7 @@
       BarChart,
       BaseCard,
       TheForm,
+      BaseListGroup,
     },
     data: function() {
       return {
@@ -111,6 +120,7 @@
           options: [],
         },
         /* variabili di stato per i dati da inserire nella pagina web */
+        fullNamesList: [],
         numEmployee: 0,
         avgAge: 0,
         avgJobYears: 0,
@@ -258,6 +268,8 @@
         return parsedRow;
       },
       refreshDashboard() {
+        this.fullNamesList = cf.allFiltered().map(row => row.FullName);
+
         const countRecords = cf
           .groupAll()
           .reduceCount()
