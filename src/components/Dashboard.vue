@@ -24,28 +24,37 @@
         <h5 class="header">Statistics</h5>
         <div class="row justify-content-center mb-4">
           <div class="col-auto">
-            <BaseCard header="# of Employee" :text="numEmployee" />
+            <BaseCard header="numer of employee" :text="numEmployee" />
           </div>
           <div class="col-auto">
-            <BaseCard header="avg Age" :text="avgAge" />
-          </div>
-        </div>
-
-        <div class="row justify-content-center mb-4">
-          <div class="col-auto">
-            <BaseCard header="avg Job Years" :text="avgJobYears" />
-          </div>
-          <div class="col-auto">
-            <BaseCard header="Counter 4" :text="numEmployee" />
+            <BaseCard header="avg age" :text="avgAge" />
           </div>
         </div>
 
         <div class="row justify-content-center mb-4">
           <div class="col-auto">
-            <BaseCard header="Counter 5" :text="numEmployee" />
+            <BaseCard header="avg years since job start" :text="avgJobYears" />
           </div>
           <div class="col-auto">
-            <BaseCard header="Counter 6" :text="numEmployee" />
+            <BaseCard
+              header="avg years since mlitary discharge"
+              :text="avgMlitaryDischargeYears"
+            />
+          </div>
+        </div>
+
+        <div class="row justify-content-center mb-4">
+          <div class="col-auto">
+            <BaseCard
+              header="avg years since passport issue date"
+              :text="avgPassportIssueYears"
+            />
+          </div>
+          <div class="col-auto">
+            <BaseCard
+              header="avg years to passport expiration date"
+              :text="avgPassportExpireYears"
+            />
           </div>
         </div>
       </div>
@@ -120,10 +129,16 @@
           options: [],
         },
         /* variabili di stato per i dati da inserire nella pagina web */
+        /* per la lista dei nomi */
         fullNamesList: [],
+        /* per le statistiche */
         numEmployee: 0,
         avgAge: 0,
         avgJobYears: 0,
+        avgMlitaryDischargeYears: 0,
+        avgPassportIssueYears: 0,
+        avgPassportExpireYears: 0,
+        /* per i Bar Charts */
         jobTypeData: [],
         jobYearsBindData: [],
         ageBindData: [],
@@ -264,12 +279,17 @@
           JobType: row.CurrentEmploymentType,
           JobYears: +row.YearsSinceCurrentEmploymentStart,
           JobYearsBind: row.YSCESBind,
+          militaryDischargeYears: +row.YearsSinceMilitaryDischargeDate,
+          passportIssueYears: +row.YearsSincePassportIssueDate,
+          passportExpireYears: +row.YearsToPassportExpirationDate,
         };
         return parsedRow;
       },
       refreshDashboard() {
+        /* aggiornamento della variabile per la lista di nomi */
         this.fullNamesList = cf.allFiltered().map(row => row.FullName);
 
+        /* aggiornamento delle variabili per le statistiche */
         const countRecords = cf
           .groupAll()
           .reduceCount()
@@ -297,6 +317,37 @@
               countRecords
           ) / 100;
 
+        this.avgMlitaryDischargeYears =
+          Math.round(
+            (100 *
+              cf
+                .groupAll()
+                .reduceSum(row => row.militaryDischargeYears)
+                .value()) /
+              countRecords
+          ) / 100;
+
+        this.avgPassportIssueYears =
+          Math.round(
+            (100 *
+              cf
+                .groupAll()
+                .reduceSum(row => row.passportIssueYears)
+                .value()) /
+              countRecords
+          ) / 100;
+
+        this.avgPassportExpireYears =
+          Math.round(
+            (100 *
+              cf
+                .groupAll()
+                .reduceSum(row => row.passportExpireYears)
+                .value()) /
+              countRecords
+          ) / 100;
+
+        /* aggiornamento delle variabili per i dati dei Bar Charts */
         this.jobTypeData = dimJobType
           .group()
           .reduceCount()
