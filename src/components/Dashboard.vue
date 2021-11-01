@@ -6,7 +6,8 @@
         <TheForm
           :jobType="jobType"
           :ageBind="ageBind"
-          :jobYearsBind="jobYearsBind"
+          :suspectedPok="suspectedPok"
+          :suspectedKidnapped="suspectedKidnapped"
           :gender="gender"
           :cluster="cluster"
         />
@@ -63,13 +64,13 @@
         <h5 class="header">Bar Charts</h5>
         <div class="row justify-content-start ms-5 mb-0 pb-0">
           <div class="col-auto ms-0 me-0 ps-0 pe-0">
-            <BarChart plotId="Job type" :aggregatedData="jobTypeData" />
-          </div>
-          <div class="col-auto ms-0 me-0 ps-0 pe-0">
             <BarChart
               plotId="Years in current job"
               :aggregatedData="jobYearsBindData"
             />
+          </div>
+          <div class="col-auto ms-0 me-0 ps-0 pe-0">
+            <BarChart plotId="Job type" :aggregatedData="jobTypeData" />
           </div>
           <div class="col-auto ms-0 me-0 ps-0 pe-0">
             <BarChart plotId="Age Rage" :aggregatedData="ageBindData" />
@@ -89,10 +90,12 @@
   import crossfilter from "crossfilter2";
 
   let cf;
-  let dimAgeBind;
-  let dimCluster;
-  let dimGender;
   let dimJobType;
+  let dimAgeBind;
+  let dimSuspectedPok;
+  let dimSuspectedKidnapped;
+  let dimGender;
+  let dimCluster;
   let dimJobYearsBind;
 
   export default {
@@ -108,19 +111,23 @@
         /* variabili di stato per i dati fetchati */
         employeeData: [],
         /* variabili di stato per le opzioni selezionabili dall'utente nei filtri */
-        ageBind: {
-          value: "",
-          options: [],
-        },
-        gender: {
-          value: "",
-          options: [],
-        },
         jobType: {
           value: "",
           options: [],
         },
-        jobYearsBind: {
+        ageBind: {
+          value: "",
+          options: [],
+        },
+        suspectedPok: {
+          value: "",
+          options: [],
+        },
+        suspectedKidnapped: {
+          value: "",
+          options: [],
+        },
+        gender: {
           value: "",
           options: [],
         },
@@ -139,8 +146,8 @@
         avgPassportIssueYears: 0,
         avgPassportExpireYears: 0,
         /* per i Bar Charts */
-        jobTypeData: [],
         jobYearsBindData: [],
+        jobTypeData: [],
         ageBindData: [],
       };
     },
@@ -152,11 +159,13 @@
 
           cf = crossfilter(this.employeeData);
 
-          dimJobType = cf.dimension(row => row.JobType);
-          dimAgeBind = cf.dimension(row => row.AgeBind);
-          dimJobYearsBind = cf.dimension(row => row.JobYearsBind);
-          dimGender = cf.dimension(row => row.Gender);
-          dimCluster = cf.dimension(row => row.Cluster);
+          dimJobType = cf.dimension(row => row.jobType);
+          dimAgeBind = cf.dimension(row => row.ageBind);
+          dimSuspectedPok = cf.dimension(row => row.suspectedPok);
+          dimSuspectedKidnapped = cf.dimension(row => row.suspectedKidnapped);
+          dimGender = cf.dimension(row => row.gender);
+          dimCluster = cf.dimension(row => row.cluster);
+          dimJobYearsBind = cf.dimension(row => row.jobYearsBind);
 
           this.jobType.options.push("All");
           this.jobType.options.push(
@@ -168,16 +177,6 @@
           );
           this.jobType.value = this.jobType.options[0];
 
-          this.jobYearsBind.options.push("All");
-          this.jobYearsBind.options.push(
-            ...dimJobYearsBind
-              .group()
-              .reduceCount()
-              .all()
-              .map(row => row.key)
-          );
-          this.jobYearsBind.value = this.jobYearsBind.options[0];
-
           this.ageBind.options.push("All");
           this.ageBind.options.push(
             ...dimAgeBind
@@ -187,6 +186,26 @@
               .map(row => row.key)
           );
           this.ageBind.value = this.ageBind.options[0];
+
+          this.suspectedPok.options.push("All");
+          this.suspectedPok.options.push(
+            ...dimSuspectedPok
+              .group()
+              .reduceCount()
+              .all()
+              .map(row => row.key)
+          );
+          this.suspectedPok.value = this.suspectedPok.options[0];
+
+          this.suspectedKidnapped.options.push("All");
+          this.suspectedKidnapped.options.push(
+            ...dimSuspectedKidnapped
+              .group()
+              .reduceCount()
+              .all()
+              .map(row => row.key)
+          );
+          this.suspectedKidnapped.value = this.suspectedKidnapped.options[0];
 
           this.gender.options.push("All");
           this.gender.options.push(
@@ -234,12 +253,23 @@
         },
         deep: true,
       },
-      jobYearsBind: {
+      suspectedPok: {
         handler(newVal) {
           if (newVal.value == "All") {
-            dimJobYearsBind.filter(null);
+            dimSuspectedPok.filter(null);
           } else {
-            dimJobYearsBind.filter(newVal.value);
+            dimSuspectedPok.filter(newVal.value);
+          }
+          this.refreshDashboard();
+        },
+        deep: true,
+      },
+      suspectedKidnapped: {
+        handler(newVal) {
+          if (newVal.value == "All") {
+            dimSuspectedKidnapped.filter(null);
+          } else {
+            dimSuspectedKidnapped.filter(newVal.value);
           }
           this.refreshDashboard();
         },
@@ -271,23 +301,25 @@
     methods: {
       parseEmployeeRow(row) {
         const parsedRow = {
-          FullName: row.FullName,
-          Gender: row.Gender,
-          Age: +row.Age,
-          AgeBind: row.AgeBind,
-          Cluster: +row.Cluster,
-          JobType: row.CurrentEmploymentType,
-          JobYears: +row.YearsSinceCurrentEmploymentStart,
-          JobYearsBind: row.YSCESBind,
+          fullName: row.FullName,
+          gender: row.Gender,
+          age: +row.Age,
+          ageBind: row.AgeBind,
+          cluster: +row.Cluster,
+          jobType: row.CurrentEmploymentType,
+          jobYears: +row.YearsSinceCurrentEmploymentStart,
+          jobYearsBind: row.YSCESBind,
           militaryDischargeYears: +row.YearsSinceMilitaryDischargeDate,
           passportIssueYears: +row.YearsSincePassportIssueDate,
           passportExpireYears: +row.YearsToPassportExpirationDate,
+          suspectedPok: row.POK_Suspected,
+          suspectedKidnapped: row.Kidnapped_Suspected,
         };
         return parsedRow;
       },
       refreshDashboard() {
         /* aggiornamento della variabile per la lista di nomi */
-        this.fullNamesList = cf.allFiltered().map(row => row.FullName);
+        this.fullNamesList = cf.allFiltered().map(row => row.fullName);
 
         /* aggiornamento delle variabili per le statistiche */
         const countRecords = cf
@@ -302,7 +334,7 @@
             (100 *
               cf
                 .groupAll()
-                .reduceSum(row => row.Age)
+                .reduceSum(row => row.age)
                 .value()) /
               countRecords
           ) / 100;
@@ -312,7 +344,7 @@
             (100 *
               cf
                 .groupAll()
-                .reduceSum(row => row.JobYears)
+                .reduceSum(row => row.jobYears)
                 .value()) /
               countRecords
           ) / 100;
@@ -348,12 +380,12 @@
           ) / 100;
 
         /* aggiornamento delle variabili per i dati dei Bar Charts */
-        this.jobTypeData = dimJobType
+        this.jobYearsBindData = dimJobYearsBind
           .group()
           .reduceCount()
           .all();
 
-        this.jobYearsBindData = dimJobYearsBind
+        this.jobTypeData = dimJobType
           .group()
           .reduceCount()
           .all();

@@ -19,7 +19,9 @@
     "YearsSinceMilitaryDischargeDate": null,
     "AgeBind": ">= 30, < 40",
     "YSCESBind": ">= 5, < 10",
-    "Cluster": 1
+    "Cluster": 0,
+    "POK_Suspected": "no",
+    "Kidnapped_Suspected": "yes"
   },
   {
     "LastName": "Ribera",
@@ -41,7 +43,9 @@
     "YearsSinceMilitaryDischargeDate": null,
     "AgeBind": ">= 30, < 40",
     "YSCESBind": "< 5",
-    "Cluster": 1
+    "Cluster": 0,
+    "POK_Suspected": "no",
+    "Kidnapped_Suspected": "yes"
   },
   {
     "LastName": "Pantanal",
@@ -63,7 +67,9 @@
     "YearsSinceMilitaryDischargeDate": null,
     "AgeBind": "< 30",
     "YSCESBind": "< 5",
-    "Cluster": 1
+    "Cluster": 0,
+    "POK_Suspected": "yes",
+    "Kidnapped_Suspected": "no"
   },
   {
     "LastName": "Lagos",
@@ -85,7 +91,9 @@
     "YearsSinceMilitaryDischargeDate": null,
     "AgeBind": ">= 30, < 40",
     "YSCESBind": "< 5",
-    "Cluster": 1
+    "Cluster": 0,
+    "POK_Suspected": "no",
+    "Kidnapped_Suspected": "yes"
   },
   {
     "LastName": "Mies Haber",
@@ -107,7 +115,9 @@
     "YearsSinceMilitaryDischargeDate": 29,
     "AgeBind": ">= 40",
     "YSCESBind": ">= 10",
-    "Cluster": 0
+    "Cluster": 1,
+    "POK_Suspected": "yes",
+    "Kidnapped_Suspected": "no"
   },
   {
     "LastName": "Forluniau",
@@ -129,7 +139,9 @@
     "YearsSinceMilitaryDischargeDate": 12,
     "AgeBind": ">= 30, < 40",
     "YSCESBind": ">= 5, < 10",
-    "Cluster": 0
+    "Cluster": 1,
+    "POK_Suspected": "no",
+    "Kidnapped_Suspected": "yes"
   },
   {
     "LastName": "Lais",
@@ -151,7 +163,9 @@
     "YearsSinceMilitaryDischargeDate": 2,
     "AgeBind": "< 30",
     "YSCESBind": "< 5",
-    "Cluster": 0
+    "Cluster": 1,
+    "POK_Suspected": "no",
+    "Kidnapped_Suspected": "yes"
   },
   {
     "LastName": "Onda",
@@ -173,7 +187,9 @@
     "YearsSinceMilitaryDischargeDate": null,
     "AgeBind": ">= 40",
     "YSCESBind": ">= 10",
-    "Cluster": 1
+    "Cluster": 0,
+    "POK_Suspected": "no",
+    "Kidnapped_Suspected": "no"
   },
   {
     "LastName": "Borrasca",
@@ -195,7 +211,9 @@
     "YearsSinceMilitaryDischargeDate": null,
     "AgeBind": ">= 30, < 40",
     "YSCESBind": ">= 5, < 10",
-    "Cluster": 1
+    "Cluster": 0,
+    "POK_Suspected": "no",
+    "Kidnapped_Suspected": "no"
   },
   {
     "LastName": "Calzas",
@@ -217,7 +235,9 @@
     "YearsSinceMilitaryDischargeDate": null,
     "AgeBind": ">= 30, < 40",
     "YSCESBind": ">= 10",
-    "Cluster": 1
+    "Cluster": 0,
+    "POK_Suspected": "no",
+    "Kidnapped_Suspected": "no"
   },
   {
     "LastName": "Orilla",
@@ -239,7 +259,9 @@
     "YearsSinceMilitaryDischargeDate": null,
     "AgeBind": ">= 40",
     "YSCESBind": ">= 5, < 10",
-    "Cluster": 1
+    "Cluster": 0,
+    "POK_Suspected": "no",
+    "Kidnapped_Suspected": "no"
   },
   {
     "LastName": "Orilla",
@@ -261,7 +283,9 @@
     "YearsSinceMilitaryDischargeDate": null,
     "AgeBind": ">= 30, < 40",
     "YSCESBind": ">= 5, < 10",
-    "Cluster": 1
+    "Cluster": 0,
+    "POK_Suspected": "no",
+    "Kidnapped_Suspected": "no"
   },
   {
     "LastName": "Tempestad",
@@ -283,7 +307,9 @@
     "YearsSinceMilitaryDischargeDate": null,
     "AgeBind": ">= 30, < 40",
     "YSCESBind": ">= 5, < 10",
-    "Cluster": 1
+    "Cluster": 0,
+    "POK_Suspected": "no",
+    "Kidnapped_Suspected": "no"
   },
   {
     "LastName": "Azada",
@@ -305,7 +331,9 @@
     "YearsSinceMilitaryDischargeDate": 18,
     "AgeBind": ">= 40",
     "YSCESBind": ">= 10",
-    "Cluster": 1
+    "Cluster": 0,
+    "POK_Suspected": "no",
+    "Kidnapped_Suspected": "no"
   },
   {
     "LastName": "Balas",
@@ -327,7 +355,9 @@
     "YearsSinceMilitaryDischargeDate": 25,
     "AgeBind": ">= 40",
     "YSCESBind": ">= 5, < 10",
-    "Cluster": 1
+    "Cluster": 0,
+    "POK_Suspected": "no",
+    "Kidnapped_Suspected": "no"
   },
   {
     "LastName": "Dedos",
@@ -349,7 +379,9 @@
     "YearsSinceMilitaryDischargeDate": null,
     "AgeBind": ">= 40",
     "YSCESBind": ">= 10",
-    "Cluster": 1
+    "Cluster": 0,
+    "POK_Suspected": "no",
+    "Kidnapped_Suspected": "no"
   },
   {
     "LastName": "Frente",
@@ -371,7 +403,9 @@
     "YearsSinceMilitaryDischargeDate": null,
     "AgeBind": ">= 30, < 40",
     "YSCESBind": ">= 10",
-    "Cluster": 1
+    "Cluster": 0,
+    "POK_Suspected": "no",
+    "Kidnapped_Suspected": "no"
   },
   {
     "LastName": "Nubarron",
@@ -393,7 +427,9 @@
     "YearsSinceMilitaryDischargeDate": null,
     "AgeBind": ">= 40",
     "YSCESBind": ">= 10",
-    "Cluster": 1
+    "Cluster": 0,
+    "POK_Suspected": "no",
+    "Kidnapped_Suspected": "no"
   },
   {
     "LastName": "Cazar",
@@ -415,7 +451,9 @@
     "YearsSinceMilitaryDischargeDate": null,
     "AgeBind": "< 30",
     "YSCESBind": "< 5",
-    "Cluster": 1
+    "Cluster": 0,
+    "POK_Suspected": "no",
+    "Kidnapped_Suspected": "no"
   },
   {
     "LastName": "Frente",
@@ -437,7 +475,9 @@
     "YearsSinceMilitaryDischargeDate": null,
     "AgeBind": ">= 30, < 40",
     "YSCESBind": ">= 10",
-    "Cluster": 1
+    "Cluster": 0,
+    "POK_Suspected": "no",
+    "Kidnapped_Suspected": "no"
   },
   {
     "LastName": "Vasco-Pais",
@@ -459,7 +499,9 @@
     "YearsSinceMilitaryDischargeDate": null,
     "AgeBind": ">= 30, < 40",
     "YSCESBind": "< 5",
-    "Cluster": 1
+    "Cluster": 0,
+    "POK_Suspected": "no",
+    "Kidnapped_Suspected": "yes"
   },
   {
     "LastName": "Sanjorge Jr.",
@@ -481,7 +523,9 @@
     "YearsSinceMilitaryDischargeDate": null,
     "AgeBind": ">= 40",
     "YSCESBind": ">= 10",
-    "Cluster": 1
+    "Cluster": 0,
+    "POK_Suspected": "no",
+    "Kidnapped_Suspected": "no"
   },
   {
     "LastName": "Barranco",
@@ -503,7 +547,9 @@
     "YearsSinceMilitaryDischargeDate": null,
     "AgeBind": ">= 40",
     "YSCESBind": ">= 10",
-    "Cluster": 1
+    "Cluster": 0,
+    "POK_Suspected": "no",
+    "Kidnapped_Suspected": "yes"
   },
   {
     "LastName": "Campo-Corrente",
@@ -525,7 +571,9 @@
     "YearsSinceMilitaryDischargeDate": null,
     "AgeBind": ">= 40",
     "YSCESBind": ">= 5, < 10",
-    "Cluster": 1
+    "Cluster": 0,
+    "POK_Suspected": "no",
+    "Kidnapped_Suspected": "yes"
   },
   {
     "LastName": "Strum",
@@ -547,7 +595,9 @@
     "YearsSinceMilitaryDischargeDate": null,
     "AgeBind": ">= 40",
     "YSCESBind": ">= 10",
-    "Cluster": 1
+    "Cluster": 0,
+    "POK_Suspected": "no",
+    "Kidnapped_Suspected": "yes"
   },
   {
     "LastName": "Ovan",
@@ -569,7 +619,9 @@
     "YearsSinceMilitaryDischargeDate": 20,
     "AgeBind": ">= 40",
     "YSCESBind": ">= 10",
-    "Cluster": 1
+    "Cluster": 0,
+    "POK_Suspected": "no",
+    "Kidnapped_Suspected": "no"
   },
   {
     "LastName": "Arpa",
@@ -591,7 +643,9 @@
     "YearsSinceMilitaryDischargeDate": 1,
     "AgeBind": "< 30",
     "YSCESBind": "< 5",
-    "Cluster": 0
+    "Cluster": 1,
+    "POK_Suspected": "no",
+    "Kidnapped_Suspected": "no"
   },
   {
     "LastName": "Awelon",
@@ -613,7 +667,9 @@
     "YearsSinceMilitaryDischargeDate": 7,
     "AgeBind": "< 30",
     "YSCESBind": "< 5",
-    "Cluster": 0
+    "Cluster": 1,
+    "POK_Suspected": "no",
+    "Kidnapped_Suspected": "no"
   },
   {
     "LastName": "Coginian",
@@ -635,7 +691,9 @@
     "YearsSinceMilitaryDischargeDate": 21,
     "AgeBind": ">= 40",
     "YSCESBind": ">= 10",
-    "Cluster": 0
+    "Cluster": 1,
+    "POK_Suspected": "no",
+    "Kidnapped_Suspected": "no"
   },
   {
     "LastName": "Hafon",
@@ -657,7 +715,9 @@
     "YearsSinceMilitaryDischargeDate": 6,
     "AgeBind": "< 30",
     "YSCESBind": "< 5",
-    "Cluster": 0
+    "Cluster": 1,
+    "POK_Suspected": "no",
+    "Kidnapped_Suspected": "no"
   },
   {
     "LastName": "Hawelon",
@@ -679,7 +739,9 @@
     "YearsSinceMilitaryDischargeDate": 14,
     "AgeBind": ">= 30, < 40",
     "YSCESBind": ">= 10",
-    "Cluster": 0
+    "Cluster": 1,
+    "POK_Suspected": "no",
+    "Kidnapped_Suspected": "no"
   },
   {
     "LastName": "Hawelon",
@@ -701,7 +763,9 @@
     "YearsSinceMilitaryDischargeDate": 10,
     "AgeBind": ">= 30, < 40",
     "YSCESBind": ">= 5, < 10",
-    "Cluster": 0
+    "Cluster": 1,
+    "POK_Suspected": "no",
+    "Kidnapped_Suspected": "no"
   },
   {
     "LastName": "Mies",
@@ -723,7 +787,9 @@
     "YearsSinceMilitaryDischargeDate": 9,
     "AgeBind": "< 30",
     "YSCESBind": "< 5",
-    "Cluster": 0
+    "Cluster": 1,
+    "POK_Suspected": "no",
+    "Kidnapped_Suspected": "no"
   },
   {
     "LastName": "Morlun",
@@ -745,7 +811,9 @@
     "YearsSinceMilitaryDischargeDate": 12,
     "AgeBind": ">= 30, < 40",
     "YSCESBind": ">= 10",
-    "Cluster": 0
+    "Cluster": 1,
+    "POK_Suspected": "no",
+    "Kidnapped_Suspected": "no"
   },
   {
     "LastName": "Morlun",
@@ -767,7 +835,9 @@
     "YearsSinceMilitaryDischargeDate": 8,
     "AgeBind": "< 30",
     "YSCESBind": ">= 5, < 10",
-    "Cluster": 0
+    "Cluster": 1,
+    "POK_Suspected": "no",
+    "Kidnapped_Suspected": "no"
   },
   {
     "LastName": "Morluniau",
@@ -789,7 +859,9 @@
     "YearsSinceMilitaryDischargeDate": 5,
     "AgeBind": "< 30",
     "YSCESBind": "< 5",
-    "Cluster": 0
+    "Cluster": 1,
+    "POK_Suspected": "no",
+    "Kidnapped_Suspected": "no"
   },
   {
     "LastName": "Nant",
@@ -811,7 +883,9 @@
     "YearsSinceMilitaryDischargeDate": 8,
     "AgeBind": "< 30",
     "YSCESBind": ">= 5, < 10",
-    "Cluster": 0
+    "Cluster": 1,
+    "POK_Suspected": "no",
+    "Kidnapped_Suspected": "no"
   },
   {
     "LastName": "Scozzese",
@@ -833,7 +907,9 @@
     "YearsSinceMilitaryDischargeDate": 7,
     "AgeBind": "< 30",
     "YSCESBind": ">= 5, < 10",
-    "Cluster": 0
+    "Cluster": 1,
+    "POK_Suspected": "no",
+    "Kidnapped_Suspected": "no"
   },
   {
     "LastName": "Bergen",
@@ -855,7 +931,9 @@
     "YearsSinceMilitaryDischargeDate": null,
     "AgeBind": ">= 40",
     "YSCESBind": ">= 5, < 10",
-    "Cluster": 1
+    "Cluster": 0,
+    "POK_Suspected": "no",
+    "Kidnapped_Suspected": "no"
   },
   {
     "LastName": "Alcazar",
@@ -877,7 +955,9 @@
     "YearsSinceMilitaryDischargeDate": null,
     "AgeBind": "< 30",
     "YSCESBind": "< 5",
-    "Cluster": 1
+    "Cluster": 0,
+    "POK_Suspected": "no",
+    "Kidnapped_Suspected": "no"
   },
   {
     "LastName": "Baza",
@@ -899,7 +979,9 @@
     "YearsSinceMilitaryDischargeDate": null,
     "AgeBind": ">= 30, < 40",
     "YSCESBind": ">= 10",
-    "Cluster": 1
+    "Cluster": 0,
+    "POK_Suspected": "no",
+    "Kidnapped_Suspected": "no"
   },
   {
     "LastName": "Calixto",
@@ -921,7 +1003,9 @@
     "YearsSinceMilitaryDischargeDate": null,
     "AgeBind": ">= 30, < 40",
     "YSCESBind": ">= 5, < 10",
-    "Cluster": 1
+    "Cluster": 0,
+    "POK_Suspected": "no",
+    "Kidnapped_Suspected": "no"
   },
   {
     "LastName": "Flecha",
@@ -943,7 +1027,9 @@
     "YearsSinceMilitaryDischargeDate": null,
     "AgeBind": "< 30",
     "YSCESBind": "< 5",
-    "Cluster": 1
+    "Cluster": 0,
+    "POK_Suspected": "no",
+    "Kidnapped_Suspected": "no"
   },
   {
     "LastName": "Herrero",
@@ -965,7 +1051,9 @@
     "YearsSinceMilitaryDischargeDate": null,
     "AgeBind": "< 30",
     "YSCESBind": ">= 5, < 10",
-    "Cluster": 1
+    "Cluster": 0,
+    "POK_Suspected": "no",
+    "Kidnapped_Suspected": "no"
   },
   {
     "LastName": "Lagos",
@@ -987,7 +1075,9 @@
     "YearsSinceMilitaryDischargeDate": null,
     "AgeBind": ">= 30, < 40",
     "YSCESBind": ">= 5, < 10",
-    "Cluster": 1
+    "Cluster": 0,
+    "POK_Suspected": "no",
+    "Kidnapped_Suspected": "no"
   },
   {
     "LastName": "Fusil",
@@ -1009,7 +1099,9 @@
     "YearsSinceMilitaryDischargeDate": 26,
     "AgeBind": ">= 40",
     "YSCESBind": ">= 5, < 10",
-    "Cluster": 1
+    "Cluster": 0,
+    "POK_Suspected": "no",
+    "Kidnapped_Suspected": "no"
   },
   {
     "LastName": "Mies",
@@ -1031,7 +1123,9 @@
     "YearsSinceMilitaryDischargeDate": 2,
     "AgeBind": "< 30",
     "YSCESBind": "< 5",
-    "Cluster": 0
+    "Cluster": 1,
+    "POK_Suspected": "yes",
+    "Kidnapped_Suspected": "no"
   },
   {
     "LastName": "Osvaldo",
@@ -1053,7 +1147,9 @@
     "YearsSinceMilitaryDischargeDate": 3,
     "AgeBind": "< 30",
     "YSCESBind": "< 5",
-    "Cluster": 0
+    "Cluster": 1,
+    "POK_Suspected": "yes",
+    "Kidnapped_Suspected": "no"
   },
   {
     "LastName": "Vann",
@@ -1075,7 +1171,9 @@
     "YearsSinceMilitaryDischargeDate": 6,
     "AgeBind": "< 30",
     "YSCESBind": ">= 5, < 10",
-    "Cluster": 0
+    "Cluster": 1,
+    "POK_Suspected": "yes",
+    "Kidnapped_Suspected": "no"
   },
   {
     "LastName": "Vann",
@@ -1097,7 +1195,9 @@
     "YearsSinceMilitaryDischargeDate": 2,
     "AgeBind": "< 30",
     "YSCESBind": "< 5",
-    "Cluster": 0
+    "Cluster": 1,
+    "POK_Suspected": "no",
+    "Kidnapped_Suspected": "no"
   },
   {
     "LastName": "Resumir",
@@ -1119,7 +1219,9 @@
     "YearsSinceMilitaryDischargeDate": 16,
     "AgeBind": ">= 40",
     "YSCESBind": ">= 10",
-    "Cluster": 1
+    "Cluster": 0,
+    "POK_Suspected": "no",
+    "Kidnapped_Suspected": "no"
   },
   {
     "LastName": "Bodrogi",
@@ -1141,7 +1243,9 @@
     "YearsSinceMilitaryDischargeDate": 5,
     "AgeBind": "< 30",
     "YSCESBind": "< 5",
-    "Cluster": 0
+    "Cluster": 1,
+    "POK_Suspected": "yes",
+    "Kidnapped_Suspected": "no"
   },
   {
     "LastName": "Cocinaro",
@@ -1163,7 +1267,9 @@
     "YearsSinceMilitaryDischargeDate": 4,
     "AgeBind": ">= 30, < 40",
     "YSCESBind": "< 5",
-    "Cluster": 1
+    "Cluster": 0,
+    "POK_Suspected": "no",
+    "Kidnapped_Suspected": "no"
   },
   {
     "LastName": "Ferro",
@@ -1185,6 +1291,8 @@
     "YearsSinceMilitaryDischargeDate": 1,
     "AgeBind": "< 30",
     "YSCESBind": "< 5",
-    "Cluster": 0
+    "Cluster": 1,
+    "POK_Suspected": "yes",
+    "Kidnapped_Suspected": "no"
   }
 ]

@@ -21,15 +21,15 @@
       </div>
 
       <div class="col-auto">
-        <label for="yearJob-select">Years in current job</label>
+        <label for="ageRange-select">Age range</label>
         <select
-          id="yearJob-select"
-          v-model="jobYearsBind.value"
-          :options="jobYearsBind.options"
+          id="ageRange-select"
+          v-model="ageBind.value"
+          :options="ageBind.options"
           class="form-select"
         >
           <option
-            v-for="(val, key) in jobYearsBind.options"
+            v-for="(val, key) in ageBind.options"
             v-bind:key="key"
             v-bind:value="val"
           >
@@ -42,23 +42,53 @@
     <!-- RADIOS -->
     <div class="row justify-content-center">
       <div class="col-auto">
-        <p>Age range</p>
+        <p>Suspected POK</p>
         <div class="input-group">
           <div
-            v-for="(val, key) in ageBind.options"
+            v-for="(val, key) in suspectedPok.options"
             v-bind:key="key"
             v-bind:value="val"
           >
             <input
-              :id="`age-radio-${key}`"
-              v-model="ageBind.value"
-              name="options-age"
+              :id="`suspectedPok-radio-${key}`"
+              v-model="suspectedPok.value"
+              name="options-suspectedPok"
               :value="val"
               type="radio"
               class="btn-check"
               autocomplete="off"
             />
-            <label :for="`age-radio-${key}`" class="btn btn-outline-secondary">
+            <label
+              :for="`suspectedPok-radio-${key}`"
+              class="btn btn-outline-secondary"
+            >
+              {{ val }}
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-auto">
+        <p>Suspected Kidnapped</p>
+        <div class="input-group">
+          <div
+            v-for="(val, key) in suspectedKidnapped.options"
+            v-bind:key="key"
+            v-bind:value="val"
+          >
+            <input
+              :id="`suspectedKidnapped-radio-${key}`"
+              v-model="suspectedKidnapped.value"
+              name="options-suspectedKidnapped"
+              :value="val"
+              type="radio"
+              class="btn-check"
+              autocomplete="off"
+            />
+            <label
+              :for="`suspectedKidnapped-radio-${key}`"
+              class="btn btn-outline-secondary"
+            >
               {{ val }}
             </label>
           </div>
@@ -126,10 +156,11 @@
   export default {
     name: "TheForm",
     props: {
-      ageBind: { required: true, type: Object },
       jobType: { required: true, type: Object },
+      ageBind: { required: true, type: Object },
+      suspectedPok: { required: true, type: Object },
+      suspectedKidnapped: { required: true, type: Object },
       gender: { required: true, type: Object },
-      jobYearsBind: { required: true, type: Object },
       cluster: { required: true, type: Object },
     },
   };
