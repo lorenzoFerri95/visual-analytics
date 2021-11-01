@@ -62,35 +62,31 @@
 
         // Initialize the nodes
         const node = svg
-          .selectAll("g.nodes")
+          .append("g")
+          .selectAll("g.node")
           .data(nodes)
           .join("g")
-          .attr("class", "nodes")
+          .attr("class", "node")
           .append("text")
+          .text(d => d.Id)
           .attr("dx", width / 2)
           .attr("dy", height / 2)
-          .text(d => {
-            return d.Id;
-          });
+          .call(d3.drag(simulation));
 
         const link = svg
-          .selectAll("line")
+          .append("g")
+          .selectAll("g.line")
           .data(edges)
-          .join("line")
+          .join("g")
           .attr("class", "line")
-          .style("stroke", "#aaa");
+          .attr("stroke", "#999")
+          .attr("stroke-opacity", 0.8);
 
         const simulation = d3
-          .forceSimulation()
-          .nodes(nodes) // Force algorithm is applied to nodes
+          .forceSimulation(nodes)
           .force(
             "link",
-            d3
-              .forceLink() // This force provides links between nodes
-              .id(d => {
-                return d.Id;
-              }) // This provide  the id of a node
-              .links(edges) // and this the list of links
+            d3.forceLink(edges).id(d => d.Id)
           )
           .force(
             "charge",
@@ -99,7 +95,7 @@
               .strength(-400)
               .theta(0.8)
               .distanceMax(150)
-          ) // This adds repulsion between nodes. Play with the -400 for the repulsion strength
+          )
           .force(
             "collide",
             d3
@@ -109,46 +105,23 @@
           )
           .force("center", d3.forceCenter(width / 2, height / 2)); // This force attracts nodes to the center of the svg area
 
-        simulation.on("tick", ticked);
-
-        // This function is run at each iteration of the force algorithm, updating the nodes position.
-        function ticked() {
+        simulation.on("tick", () => {
           link
-            .attr("x1", function(d) {
+            .attr("x1", d => {
               return d.Source.x;
             })
-            .attr("y1", function(d) {
+            .attr("y1", d => {
               return d.Source.y;
             })
-            .attr("x2", function(d) {
+            .attr("x2", d => {
               return d.Target.x;
             })
-            .attr("y2", function(d) {
+            .attr("y2", d => {
               return d.Target.y;
             });
 
-          node
-            .attr("r", 16)
-            .style("fill", "#efefef")
-            .style("stroke", "#424242")
-            .style("stroke-width", "1px")
-            .attr("cx", function(d) {
-              return d.x + 6;
-            })
-            .attr("cy", function(d) {
-              return d.y - 6;
-            });
-        }
-
-        ////
-
-        /*         node
-          .append("text")
-          .attr("dx", 250)
-          .attr("dy", 250)
-          .text(d => {
-            return d.Id;
-          }); */
+          node.attr("cx", d => d.x).attr("cy", d => d.y);
+        });
       },
     },
   };

@@ -101,10 +101,10 @@
   export default {
     name: "Dashboard",
     components: {
-      BarChart,
-      BaseCard,
       TheForm,
       BaseListGroup,
+      BaseCard,
+      BarChart,
     },
     data: function() {
       return {
