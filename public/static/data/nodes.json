@@ -1,56 +1,412 @@
 [
-  { "Id": "Ada Campo-Corrente" },
-  { "Id": "Adan Morlun" },
-  { "Id": "Adra Nubarron" },
-  { "Id": "Albina Hafon" },
-  { "Id": "Anda Ribera" },
-  { "Id": "Axel Calzas" },
-  { "Id": "Benito Hawelon" },
-  { "Id": "Bertrand Ovan" },
-  { "Id": "Birgitta Frente" },
-  { "Id": "Brand Tempestad" },
-  { "Id": "Carla Forluniau" },
-  { "Id": "Cecilia Morluniau" },
-  { "Id": "Claudio Hawelon" },
-  { "Id": "Cornelia Lais" },
-  { "Id": "Dante Coginian" },
-  { "Id": "Dylan Scozzese" },
-  { "Id": "Edvard Vann" },
-  { "Id": "Elsa Orilla" },
-  { "Id": "Emile Arpa" },
-  { "Id": "Felix Balas" },
-  { "Id": "Felix Resumir" },
-  { "Id": "Gustav Cazar" },
-  { "Id": "Henk Mies" },
-  { "Id": "Hennie Osvaldo" },
-  { "Id": "Hideki Cocinaro" },
-  { "Id": "Inga Ferro" },
-  { "Id": "Ingrid Barranco" },
-  { "Id": "Irene Nant" },
-  { "Id": "Isak Baza" },
-  { "Id": "Isande Borrasca" },
-  { "Id": "Isia Vann" },
-  { "Id": "Kanon Herrero" },
-  { "Id": "Kare Orilla" },
-  { "Id": "Lars Azada" },
-  { "Id": "Lidelse Dedos" },
-  { "Id": "Linda Lagos" },
-  { "Id": "Linnea Bergen" },
-  { "Id": "Loreto Bodrogi" },
-  { "Id": "Lucas Alcazar" },
-  { "Id": "Marin Onda" },
-  { "Id": "Mat Bramar" },
-  { "Id": "Minke Mies" },
-  { "Id": "Nils Calixto" },
-  { "Id": "Orhan Strum" },
-  { "Id": "Rachel Pantanal" },
-  { "Id": "Ruscella Mies Haber" },
-  { "Id": "Sten Sanjorge Jr." },
-  { "Id": "Stenig Fusil" },
-  { "Id": "Sven Flecha" },
-  { "Id": "Valeria Morlun" },
-  { "Id": "Varja Lagos" },
-  { "Id": "Varro Awelon" },
-  { "Id": "Vira Frente" },
-  { "Id": "Willem Vasco-Pais" }
+  {
+    "id": 1,
+    "name": "ada campo-corrente",
+    "_cssClass": "gastech",
+    "_labelClass": "gastech"
+  },
+  {
+    "id": 2,
+    "name": "adan morlun",
+    "_cssClass": "gastech",
+    "_labelClass": "gastech"
+  },
+  {
+    "id": 3,
+    "name": "adra nubarron",
+    "_cssClass": "gastech",
+    "_labelClass": "gastech"
+  },
+  {
+    "id": 4,
+    "name": "albina hafon",
+    "_cssClass": "gastech",
+    "_labelClass": "gastech"
+  },
+  {
+    "id": 5,
+    "name": "anda ribera",
+    "_cssClass": "gastech",
+    "_labelClass": "gastech"
+  },
+  {
+    "id": 6,
+    "name": "axel calzas",
+    "_cssClass": "gastech",
+    "_labelClass": "gastech"
+  },
+  {
+    "id": 7,
+    "name": "benito hawelon",
+    "_cssClass": "gastech",
+    "_labelClass": "gastech"
+  },
+  {
+    "id": 8,
+    "name": "bertrand ovan",
+    "_cssClass": "gastech",
+    "_labelClass": "gastech"
+  },
+  {
+    "id": 9,
+    "name": "birgitta frente",
+    "_cssClass": "gastech",
+    "_labelClass": "gastech"
+  },
+  {
+    "id": 10,
+    "name": "brand tempestad",
+    "_cssClass": "gastech",
+    "_labelClass": "gastech"
+  },
+  {
+    "id": 11,
+    "name": "carla forluniau",
+    "_cssClass": "gastech",
+    "_labelClass": "gastech"
+  },
+  {
+    "id": 12,
+    "name": "cecilia morluniau",
+    "_cssClass": "gastech",
+    "_labelClass": "gastech"
+  },
+  {
+    "id": 13,
+    "name": "claudio hawelon",
+    "_cssClass": "gastech",
+    "_labelClass": "gastech"
+  },
+  {
+    "id": 14,
+    "name": "cornelia lais",
+    "_cssClass": "gastech",
+    "_labelClass": "gastech"
+  },
+  {
+    "id": 15,
+    "name": "dante coginian",
+    "_cssClass": "gastech",
+    "_labelClass": "gastech"
+  },
+  {
+    "id": 16,
+    "name": "dylan scozzese",
+    "_cssClass": "gastech",
+    "_labelClass": "gastech"
+  },
+  {
+    "id": 17,
+    "name": "edvard vann",
+    "_cssClass": "gastech",
+    "_labelClass": "gastech"
+  },
+  {
+    "id": 18,
+    "name": "elsa orilla",
+    "_cssClass": "gastech",
+    "_labelClass": "gastech"
+  },
+  {
+    "id": 19,
+    "name": "emile arpa",
+    "_cssClass": "gastech",
+    "_labelClass": "gastech"
+  },
+  {
+    "id": 20,
+    "name": "felix balas",
+    "_cssClass": "gastech",
+    "_labelClass": "gastech"
+  },
+  {
+    "id": 21,
+    "name": "felix resumir",
+    "_cssClass": "gastech",
+    "_labelClass": "gastech"
+  },
+  {
+    "id": 22,
+    "name": "gustav cazar",
+    "_cssClass": "gastech",
+    "_labelClass": "gastech"
+  },
+  {
+    "id": 23,
+    "name": "henk mies",
+    "_cssClass": "gastech",
+    "_labelClass": "gastech"
+  },
+  {
+    "id": 24,
+    "name": "hennie osvaldo",
+    "_cssClass": "pok_gastech",
+    "_labelClass": "pok_gastech"
+  },
+  {
+    "id": 25,
+    "name": "hideki cocinaro",
+    "_cssClass": "gastech",
+    "_labelClass": "gastech"
+  },
+  {
+    "id": 26,
+    "name": "inga ferro",
+    "_cssClass": "pok_gastech",
+    "_labelClass": "pok_gastech"
+  },
+  {
+    "id": 27,
+    "name": "ingrid barranco",
+    "_cssClass": "gastech",
+    "_labelClass": "gastech"
+  },
+  {
+    "id": 28,
+    "name": "irene nant",
+    "_cssClass": "gastech",
+    "_labelClass": "gastech"
+  },
+  {
+    "id": 29,
+    "name": "isak baza",
+    "_cssClass": "gastech",
+    "_labelClass": "gastech"
+  },
+  {
+    "id": 30,
+    "name": "isande borrasca",
+    "_cssClass": "gastech",
+    "_labelClass": "gastech"
+  },
+  {
+    "id": 31,
+    "name": "isia vann",
+    "_cssClass": "pok_gastech",
+    "_labelClass": "pok_gastech"
+  },
+  {
+    "id": 32,
+    "name": "kanon herrero",
+    "_cssClass": "gastech",
+    "_labelClass": "gastech"
+  },
+  {
+    "id": 33,
+    "name": "kare orilla",
+    "_cssClass": "gastech",
+    "_labelClass": "gastech"
+  },
+  {
+    "id": 34,
+    "name": "lars azada",
+    "_cssClass": "gastech",
+    "_labelClass": "gastech"
+  },
+  {
+    "id": 35,
+    "name": "lidelse dedos",
+    "_cssClass": "gastech",
+    "_labelClass": "gastech"
+  },
+  {
+    "id": 36,
+    "name": "linda lagos",
+    "_cssClass": "gastech",
+    "_labelClass": "gastech"
+  },
+  {
+    "id": 37,
+    "name": "linnea bergen",
+    "_cssClass": "gastech",
+    "_labelClass": "gastech"
+  },
+  {
+    "id": 38,
+    "name": "loreto bodrogi",
+    "_cssClass": "pok_gastech",
+    "_labelClass": "pok_gastech"
+  },
+  {
+    "id": 39,
+    "name": "lucas alcazar",
+    "_cssClass": "gastech",
+    "_labelClass": "gastech"
+  },
+  {
+    "id": 40,
+    "name": "marin onda",
+    "_cssClass": "gastech",
+    "_labelClass": "gastech"
+  },
+  {
+    "id": 41,
+    "name": "mat bramar",
+    "_cssClass": "gastech",
+    "_labelClass": "gastech"
+  },
+  {
+    "id": 42,
+    "name": "minke mies",
+    "_cssClass": "pok_gastech",
+    "_labelClass": "pok_gastech"
+  },
+  {
+    "id": 43,
+    "name": "nils calixto",
+    "_cssClass": "gastech",
+    "_labelClass": "gastech"
+  },
+  {
+    "id": 44,
+    "name": "orhan strum",
+    "_cssClass": "gastech",
+    "_labelClass": "gastech"
+  },
+  {
+    "id": 45,
+    "name": "rachel pantanal",
+    "_cssClass": "pok_gastech",
+    "_labelClass": "pok_gastech"
+  },
+  {
+    "id": 46,
+    "name": "ruscella mies haber",
+    "_cssClass": "pok_gastech",
+    "_labelClass": "pok_gastech"
+  },
+  {
+    "id": 47,
+    "name": "sten sanjorge jr.",
+    "_cssClass": "gastech",
+    "_labelClass": "gastech"
+  },
+  {
+    "id": 48,
+    "name": "stenig fusil",
+    "_cssClass": "gastech",
+    "_labelClass": "gastech"
+  },
+  {
+    "id": 49,
+    "name": "sven flecha",
+    "_cssClass": "gastech",
+    "_labelClass": "gastech"
+  },
+  {
+    "id": 50,
+    "name": "valeria morlun",
+    "_cssClass": "gastech",
+    "_labelClass": "gastech"
+  },
+  {
+    "id": 51,
+    "name": "varja lagos",
+    "_cssClass": "gastech",
+    "_labelClass": "gastech"
+  },
+  {
+    "id": 52,
+    "name": "varro awelon",
+    "_cssClass": "gastech",
+    "_labelClass": "gastech"
+  },
+  {
+    "id": 53,
+    "name": "vira frente",
+    "_cssClass": "gastech",
+    "_labelClass": "gastech"
+  },
+  {
+    "id": 54,
+    "name": "willem vasco-pais",
+    "_cssClass": "gastech",
+    "_labelClass": "gastech"
+  },
+  {
+    "id": 55,
+    "name": "carmine osvaldo",
+    "_cssClass": "pok",
+    "_labelClass": "pok"
+  },
+  {
+    "id": 56,
+    "name": "ale l. hanne",
+    "_cssClass": "pok",
+    "_labelClass": "pok"
+  },
+  {
+    "id": 57,
+    "name": "jeroen karel",
+    "_cssClass": "pok",
+    "_labelClass": "pok"
+  },
+  {
+    "id": 58,
+    "name": "valentine mies",
+    "_cssClass": "pok",
+    "_labelClass": "pok"
+  },
+  { "id": 59, "name": "yanick cato", "_cssClass": "pok", "_labelClass": "pok" },
+  {
+    "id": 60,
+    "name": "joreto katell",
+    "_cssClass": "pok",
+    "_labelClass": "pok"
+  },
+  {
+    "id": 61,
+    "name": "henk bodrogi",
+    "_cssClass": "pok",
+    "_labelClass": "pok"
+  },
+  { "id": 62, "name": "elian karel", "_cssClass": "pok", "_labelClass": "pok" },
+  {
+    "id": 63,
+    "name": "silvia marek",
+    "_cssClass": "pok",
+    "_labelClass": "pok"
+  },
+  { "id": 64, "name": "mandor vann", "_cssClass": "pok", "_labelClass": "pok" },
+  {
+    "id": 65,
+    "name": "petrus gerhard",
+    "_cssClass": "pok",
+    "_labelClass": "pok"
+  },
+  { "id": 66, "name": "maha salo", "_cssClass": "pok", "_labelClass": "pok" },
+  {
+    "id": 67,
+    "name": "joclyn reynolds",
+    "_cssClass": "pok",
+    "_labelClass": "pok"
+  },
+  {
+    "id": 68,
+    "name": "cesare nespola",
+    "_cssClass": "pok",
+    "_labelClass": "pok"
+  },
+  { "id": 69, "name": "lucio jakab", "_cssClass": "pok", "_labelClass": "pok" },
+  {
+    "id": 70,
+    "name": "lorenzo di stefano",
+    "_cssClass": "pok",
+    "_labelClass": "pok"
+  },
+  {
+    "id": 71,
+    "name": "michale kraft",
+    "_cssClass": "pok",
+    "_labelClass": "pok"
+  },
+  { "id": 72, "name": "jon l.", "_cssClass": "pok", "_labelClass": "pok" },
+  {
+    "id": 73,
+    "name": "kriste bronte",
+    "_cssClass": "pok",
+    "_labelClass": "pok"
+  },
+  { "id": 74, "name": "hank fluss", "_cssClass": "pok", "_labelClass": "pok" },
+  { "id": "75", "name": "pok", "_cssClass": "pok", "_labelClass": "pok" }
 ]
