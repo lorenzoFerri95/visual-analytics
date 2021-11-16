@@ -4,24 +4,21 @@
 
     <div class="container-fluid ms-4 me-3">
       <div class="row justify-content-center mt-4 mb-4">
-        <router-view></router-view>
+        <Dashboard />
       </div>
-      <!-- <div class="row justify-content-center">
-        <Network />
-      </div> -->
     </div>
   </div>
 </template>
 
 <script>
-  /* import Network from "@/components/plots/Network.vue"; */
   import TheNavbar from "@/components/TheNavbar.vue";
+  import Dashboard from "@/components/Dashboard.vue";
 
   export default {
     name: "App",
     components: {
       TheNavbar,
-      /* Network, */
+      Dashboard,
     },
   };
 </script>

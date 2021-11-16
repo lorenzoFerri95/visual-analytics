@@ -49,12 +49,15 @@ canvas {
 }
 
 /* colori "blind safe" ottenuti da ColorBrewer */
-.gastech {
+.gastech-node,
+.gastech-label {
   fill: #1b9e77;
 }
-.pok {
+.pok-node,
+.pok-label {
   fill: #7570b3;
 }
-.pok_gastech {
+.pok_gastech-node,
+.pok_gastech-label {
   fill: #d95f02;
 }

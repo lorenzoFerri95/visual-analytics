@@ -1,66 +1,27 @@
 <template>
   <form>
-    <!-- SELECTIONS -->
+    <!-- RADIOS -->
     <div class="row justify-content-center mb-4">
       <div class="col-auto">
-        <label for="jobType-select">Job type</label>
-        <select
-          id="jobType-select"
-          v-model="jobType.value"
-          :options="jobType.options"
-          class="form-select"
-        >
-          <option
-            v-for="(val, key) in jobType.options"
-            v-bind:key="key"
-            v-bind:value="val"
-          >
-            {{ val }}
-          </option>
-        </select>
-      </div>
-
-      <div class="col-auto">
-        <label for="ageRange-select">Age range</label>
-        <select
-          id="ageRange-select"
-          v-model="ageBind.value"
-          :options="ageBind.options"
-          class="form-select"
-        >
-          <option
-            v-for="(val, key) in ageBind.options"
-            v-bind:key="key"
-            v-bind:value="val"
-          >
-            {{ val }}
-          </option>
-        </select>
-      </div>
-    </div>
-
-    <!-- RADIOS -->
-    <div class="row justify-content-center">
-      <div class="col-auto">
-        <p>Suspected POK</p>
+        <p>Membership</p>
         <div class="input-group">
           <div
-            v-for="(val, key) in suspectedPok.options"
+            v-for="(val, key) in membership.options"
             v-bind:key="key"
             v-bind:value="val"
           >
             <input
-              :id="`suspectedPok-radio-${key}`"
-              v-model="suspectedPok.value"
-              name="options-suspectedPok"
+              :id="`membership-radio-${key}`"
+              v-model="membership.value"
+              name="options-membership"
               :value="val"
               type="radio"
               class="btn-check"
               autocomplete="off"
             />
             <label
-              :for="`suspectedPok-radio-${key}`"
-              class="btn btn-outline-secondary"
+              :for="`membership-radio-${key}`"
+              class="btn btn-outline-primary"
             >
               {{ val }}
             </label>
@@ -69,25 +30,25 @@
       </div>
 
       <div class="col-auto">
-        <p>Suspected Kidnapped</p>
+        <p>Kidnapped</p>
         <div class="input-group">
           <div
-            v-for="(val, key) in suspectedKidnapped.options"
+            v-for="(val, key) in kidnapped.options"
             v-bind:key="key"
             v-bind:value="val"
           >
             <input
-              :id="`suspectedKidnapped-radio-${key}`"
-              v-model="suspectedKidnapped.value"
-              name="options-suspectedKidnapped"
+              :id="`kidnapped-radio-${key}`"
+              v-model="kidnapped.value"
+              name="options-kidnapped"
               :value="val"
               type="radio"
               class="btn-check"
               autocomplete="off"
             />
             <label
-              :for="`suspectedKidnapped-radio-${key}`"
-              class="btn btn-outline-secondary"
+              :for="`kidnapped-radio-${key}`"
+              class="btn btn-outline-danger"
             >
               {{ val }}
             </label>
@@ -111,6 +72,7 @@
               type="radio"
               class="btn-check"
               autocomplete="off"
+              disabled
             />
             <label
               :for="`gender-radio-${key}`"
@@ -121,32 +83,46 @@
           </div>
         </div>
       </div>
+    </div>
 
+    <!-- SELECTIONS -->
+    <div class="row justify-content-center">
       <div class="col-auto">
-        <p>Cluster</p>
-        <div class="input-group">
-          <div
-            v-for="(val, key) in cluster.options"
+        <label for="jobType-select">Job type</label>
+        <select
+          id="jobType-select"
+          v-model="jobType.value"
+          :options="jobType.options"
+          class="form-select"
+          disabled
+        >
+          <option
+            v-for="(val, key) in jobType.options"
             v-bind:key="key"
             v-bind:value="val"
           >
-            <input
-              :id="`cluster-radio-${key}`"
-              v-model="cluster.value"
-              name="options-cluster"
-              :value="val"
-              type="radio"
-              class="btn-check"
-              autocomplete="off"
-            />
-            <label
-              :for="`cluster-radio-${key}`"
-              class="btn btn-outline-secondary"
-            >
-              {{ val }}
-            </label>
-          </div>
-        </div>
+            {{ val }}
+          </option>
+        </select>
+      </div>
+
+      <div class="col-auto">
+        <label for="ageRange-select">Age range</label>
+        <select
+          id="ageRange-select"
+          v-model="ageBind.value"
+          :options="ageBind.options"
+          class="form-select"
+          disabled
+        >
+          <option
+            v-for="(val, key) in ageBind.options"
+            v-bind:key="key"
+            v-bind:value="val"
+          >
+            {{ val }}
+          </option>
+        </select>
       </div>
     </div>
   </form>
@@ -158,10 +134,9 @@
     props: {
       jobType: { required: true, type: Object },
       ageBind: { required: true, type: Object },
-      suspectedPok: { required: true, type: Object },
-      suspectedKidnapped: { required: true, type: Object },
+      membership: { required: true, type: Object },
+      kidnapped: { required: true, type: Object },
       gender: { required: true, type: Object },
-      cluster: { required: true, type: Object },
     },
   };
 </script>

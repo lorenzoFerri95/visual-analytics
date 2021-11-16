@@ -1,4 +1,4 @@
-import Vue from "vue";
+/* import Vue from "vue";
 import VueRouter from "vue-router";
 
 import Dashboard from "@/components/Dashboard.vue";
@@ -15,3 +15,4 @@ export default new VueRouter({
     { path: "/network", component: Network },
   ],
 });
+ */

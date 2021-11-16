@@ -6,16 +6,15 @@
         <TheForm
           :jobType="jobType"
           :ageBind="ageBind"
-          :suspectedPok="suspectedPok"
-          :suspectedKidnapped="suspectedKidnapped"
+          :membership="membership"
+          :kidnapped="kidnapped"
           :gender="gender"
-          :cluster="cluster"
         />
       </div>
       <div class="col-4 ms-4" align="center">
-        <h5 class="header">Employee Names List</h5>
+        <h5 class="header">Names List</h5>
         <div class="overflow-auto" style="height: 170px; width: 300px">
-          <BaseListGroup :fullNamesList="fullNamesList" />
+          <BaseListGroup :namesList="namesList" />
         </div>
       </div>
     </div>
@@ -25,7 +24,7 @@
         <h5 class="header">Statistics</h5>
         <div class="row justify-content-center mb-4">
           <div class="col-auto">
-            <BaseCard header="numer of employee" :text="numEmployee" />
+            <BaseCard header="numer of persons" :text="numEmployee" />
           </div>
           <div class="col-auto">
             <BaseCard header="avg age" :text="avgAge" />
@@ -44,7 +43,7 @@
           </div>
         </div>
 
-        <div class="row justify-content-center mb-4">
+        <div class="row justify-content-center">
           <div class="col-auto">
             <BaseCard
               header="avg years since passport issue date"
@@ -78,6 +77,16 @@
         </div>
       </div>
     </div>
+
+    <div class="row justify-content-center">
+      <h5 class="header">Network</h5>
+      <div class="col-auto">
+        <Network
+          :networkNodesData="networkNodesData"
+          :networkLinksData="networkLinksData"
+        />
+      </div>
+    </div>
   </div>
 </template>
 
@@ -86,16 +95,16 @@
   import BaseListGroup from "@/components/base/BaseListGroup.vue";
   import BaseCard from "@/components/base/BaseCard.vue";
   import BarChart from "@/components/plots/BarChart.vue";
+  import Network from "@/components/plots/Network.vue";
 
   import crossfilter from "crossfilter2";
 
   let cf;
   let dimJobType;
   let dimAgeBind;
-  let dimSuspectedPok;
-  let dimSuspectedKidnapped;
+  let dimMembership;
+  let dimKidnapped;
   let dimGender;
-  let dimCluster;
   let dimJobYearsBind;
 
   export default {
@@ -105,11 +114,12 @@
       BaseListGroup,
       BaseCard,
       BarChart,
+      Network,
     },
     data: function() {
       return {
         /* variabili di stato per i dati fetchati */
-        employeeData: [],
+        personsData: [],
         /* variabili di stato per le opzioni selezionabili dall'utente nei filtri */
         jobType: {
           value: "",
@@ -119,11 +129,11 @@
           value: "",
           options: [],
         },
-        suspectedPok: {
+        membership: {
           value: "",
           options: [],
         },
-        suspectedKidnapped: {
+        kidnapped: {
           value: "",
           options: [],
         },
@@ -131,13 +141,9 @@
           value: "",
           options: [],
         },
-        cluster: {
-          value: "",
-          options: [],
-        },
         /* variabili di stato per i dati da inserire nella pagina web */
         /* per la lista dei nomi */
-        fullNamesList: [],
+        namesList: [],
         /* per le statistiche */
         numEmployee: 0,
         avgAge: 0,
@@ -149,63 +155,45 @@
         jobYearsBindData: [],
         jobTypeData: [],
         ageBindData: [],
+        /* per il network */
+        networkNodesData: [],
+        networkLinksData: [],
       };
     },
     mounted: function() {
-      fetch("./static/data/employee.json")
+      fetch("./static/data/persons_try.json")
         .then(response => response.json())
         .then(data => {
-          this.employeeData = data.map(row => this.parseEmployeeRow(row));
+          this.personsData = data.map(row => this.personsDataParsing(row));
 
-          cf = crossfilter(this.employeeData);
+          cf = crossfilter(this.personsData);
 
           dimJobType = cf.dimension(row => row.jobType);
           dimAgeBind = cf.dimension(row => row.ageBind);
-          dimSuspectedPok = cf.dimension(row => row.suspectedPok);
-          dimSuspectedKidnapped = cf.dimension(row => row.suspectedKidnapped);
+          dimMembership = cf.dimension(row => row.membership);
+          dimKidnapped = cf.dimension(row => row.kidnapped);
           dimGender = cf.dimension(row => row.gender);
-          dimCluster = cf.dimension(row => row.cluster);
           dimJobYearsBind = cf.dimension(row => row.jobYearsBind);
 
-          this.jobType.options.push("All");
-          this.jobType.options.push(
-            ...dimJobType
+          this.membership.options.push("All");
+          this.membership.options.push(
+            ...dimMembership
               .group()
               .reduceCount()
               .all()
               .map(row => row.key)
           );
-          this.jobType.value = this.jobType.options[0];
+          this.membership.value = "All";
 
-          this.ageBind.options.push("All");
-          this.ageBind.options.push(
-            ...dimAgeBind
+          this.kidnapped.options.push("All");
+          this.kidnapped.options.push(
+            ...dimKidnapped
               .group()
               .reduceCount()
               .all()
               .map(row => row.key)
           );
-          this.ageBind.value = this.ageBind.options[0];
-
-          this.suspectedPok.options.push("All");
-          this.suspectedPok.options.push(
-            ...dimSuspectedPok
-              .group()
-              .reduceCount()
-              .all()
-              .map(row => row.key)
-          );
-          this.suspectedPok.value = this.suspectedPok.options[0];
-
-          this.suspectedKidnapped.options.push("All");
-          this.suspectedKidnapped.options.push(
-            ...dimSuspectedKidnapped
-              .group()
-              .reduceCount()
-              .all()
-              .map(row => row.key)
-          );
-          this.suspectedKidnapped.value = this.suspectedKidnapped.options[0];
+          this.kidnapped.value = "All";
 
           this.gender.options.push("All");
           this.gender.options.push(
@@ -215,17 +203,30 @@
               .all()
               .map(row => row.key)
           );
-          this.gender.value = this.gender.options[0];
+          this.gender.options = this.gender.options.filter(s => s != null);
+          this.gender.value = "All";
 
-          this.cluster.options.push("All");
-          this.cluster.options.push(
-            ...dimCluster
+          this.jobType.options.push("All");
+          this.jobType.options.push(
+            ...dimJobType
               .group()
               .reduceCount()
               .all()
               .map(row => row.key)
           );
-          this.cluster.value = this.cluster.options[0];
+          this.jobType.options = this.jobType.options.filter(s => s != null);
+          this.jobType.value = "All";
+
+          this.ageBind.options.push("All");
+          this.ageBind.options.push(
+            ...dimAgeBind
+              .group()
+              .reduceCount()
+              .all()
+              .map(row => row.key)
+          );
+          this.ageBind.options = this.ageBind.options.filter(s => s != null);
+          this.ageBind.value = "All";
 
           this.refreshDashboard();
         });
@@ -253,23 +254,23 @@
         },
         deep: true,
       },
-      suspectedPok: {
+      membership: {
         handler(newVal) {
           if (newVal.value == "All") {
-            dimSuspectedPok.filter(null);
+            dimMembership.filter(null);
           } else {
-            dimSuspectedPok.filter(newVal.value);
+            dimMembership.filter(newVal.value);
           }
           this.refreshDashboard();
         },
         deep: true,
       },
-      suspectedKidnapped: {
+      kidnapped: {
         handler(newVal) {
           if (newVal.value == "All") {
-            dimSuspectedKidnapped.filter(null);
+            dimKidnapped.filter(null);
           } else {
-            dimSuspectedKidnapped.filter(newVal.value);
+            dimKidnapped.filter(newVal.value);
           }
           this.refreshDashboard();
         },
@@ -286,40 +287,48 @@
         },
         deep: true,
       },
-      cluster: {
-        handler(newVal) {
-          if (newVal.value == "All") {
-            dimCluster.filter(null);
-          } else {
-            dimCluster.filter(newVal.value);
-          }
-          this.refreshDashboard();
-        },
-        deep: true,
-      },
     },
     methods: {
-      parseEmployeeRow(row) {
+      personsDataParsing(row) {
         const parsedRow = {
-          fullName: row.FullName,
+          id: row.Id,
+          name: row.FullName,
           gender: row.Gender,
           age: +row.Age,
           ageBind: row.AgeBind,
-          cluster: +row.Cluster,
           jobType: row.CurrentEmploymentType,
           jobYears: +row.YearsSinceCurrentEmploymentStart,
           jobYearsBind: row.YSCESBind,
           militaryDischargeYears: +row.YearsSinceMilitaryDischargeDate,
           passportIssueYears: +row.YearsSincePassportIssueDate,
           passportExpireYears: +row.YearsToPassportExpirationDate,
-          suspectedPok: row.POK_Suspected,
-          suspectedKidnapped: row.Kidnapped_Suspected,
+          kidnapped: row.Kidnapped,
+          membership: row.Membership,
+          cssClass: row.CssClass,
+          labelClass: row.LabelClass,
+          targetNodes: row.TargetNodes,
         };
+        return parsedRow;
+      },
+      networkNodesDataParsing(row) {
+        const parsedRow = {
+          id: row.id,
+          name: row.name,
+          _cssClass: row.cssClass,
+          _labelClass: row.labelClass,
+        };
+        return parsedRow;
+      },
+      networkLinksDataParsing(row) {
+        let parsedRow = [];
+        row.targetNodes.forEach(element => {
+          parsedRow.push({ sid: row.id, tid: element });
+        });
         return parsedRow;
       },
       refreshDashboard() {
         /* aggiornamento della variabile per la lista di nomi */
-        this.fullNamesList = cf.allFiltered().map(row => row.fullName);
+        this.namesList = cf.allFiltered().map(row => row.name);
 
         /* aggiornamento delle variabili per le statistiche */
         const countRecords = cf
@@ -394,6 +403,18 @@
           .group()
           .reduceCount()
           .all();
+
+        /* aggiornamento delle variabili per i dati del Network */
+        this.networkNodesData = cf
+          .allFiltered()
+          .map(row => this.networkNodesDataParsing(row));
+
+        const filteredIds = new Set(cf.allFiltered().map(row => row.id));
+
+        this.networkLinksData = cf
+          .allFiltered()
+          .flatMap(row => this.networkLinksDataParsing(row))
+          .filter(d => filteredIds.has(d.tid));
       },
     },
   };

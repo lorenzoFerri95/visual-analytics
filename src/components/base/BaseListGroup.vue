@@ -1,7 +1,7 @@
 <template>
   <ul class="list-group">
     <li
-      v-for="(val, key) in fullNamesList"
+      v-for="(val, key) in namesList"
       v-bind:key="key"
       v-bind:value="val"
       class="list-group-item"
@@ -15,7 +15,7 @@
   export default {
     name: "BaseListGroup",
     props: {
-      fullNamesList: { required: true, type: Array },
+      namesList: { required: true, type: Array },
     },
   };
 </script>

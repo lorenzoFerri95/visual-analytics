@@ -22,7 +22,6 @@
 </template>
 
 <script>
-  import * as d3 from "d3";
   import D3Network from "vue-d3-network";
 
   export default {
@@ -30,6 +29,10 @@
       D3Network,
     },
     name: "Network",
+    props: {
+      networkNodesData: { required: true, type: Array },
+      networkLinksData: { required: true, type: Array },
+    },
     data: function() {
       return {
         nodes: [],
@@ -54,30 +57,24 @@
       };
     },
     mounted: function() {
-      const resources = [
-        "./static/data/nodes.json",
-        "./static/data/links.json",
-      ];
-
-      let promises = [];
-
-      resources.forEach(url => {
-        promises.push(d3.json(url));
-      });
-
-      Promise.all(promises).then(responses => {
-        this.nodes = responses[0];
-        this.links = responses[1];
-      });
+      /* fetch("./static/data/links.json")
+        .then(response => response.json())
+        .then(data => (this.links = data)); */
     },
-    /* watch: {
-      options: {
+    watch: {
+      networkNodesData: function(newData) {
+        this.nodes = newData;
+      },
+      networkLinksData: function(newData) {
+        this.links = newData;
+      },
+      /* options: {
         handler(newVal) {
           this.options.nodeSize = newVal.nodeSize;
         },
       },
-      deep: true,
-    }, */
+      deep: true, */
+    },
   };
 </script>
 
