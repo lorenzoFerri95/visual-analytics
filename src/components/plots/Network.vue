@@ -1,24 +1,5 @@
 <template>
-  <div>
-    <!-- <div class="row justify-content-start">
-      <div class="col-auto">
-        <label for="nodeSize-rangeSelection" class="form-label">
-          Node size
-        </label>
-        <input
-          id="nodeSize-rangeSelection"
-          type="range"
-          class="form-range"
-          min="1"
-          max="30"
-          step="1"
-          v-model="options.nodeSize"
-        />
-        {{ options.nodeSize }}
-      </div>
-    </div> -->
-    <d3-network :net-nodes="nodes" :net-links="links" :options="options" />
-  </div>
+  <d3-network :net-nodes="nodes" :net-links="links" :options="options" />
 </template>
 
 <script>
@@ -56,11 +37,6 @@
         },
       };
     },
-    mounted: function() {
-      /* fetch("./static/data/links.json")
-        .then(response => response.json())
-        .then(data => (this.links = data)); */
-    },
     watch: {
       networkNodesData: function(newData) {
         this.nodes = newData;
@@ -68,12 +44,6 @@
       networkLinksData: function(newData) {
         this.links = newData;
       },
-      /* options: {
-        handler(newVal) {
-          this.options.nodeSize = newVal.nodeSize;
-        },
-      },
-      deep: true, */
     },
   };
 </script>

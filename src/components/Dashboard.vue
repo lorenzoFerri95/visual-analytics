@@ -215,8 +215,6 @@
               .map(row => row.key)
           );
           this.jobType.value = "All";
-
-          this.refreshDashboard();
         });
     },
     watch: {
