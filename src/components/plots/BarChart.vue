@@ -80,8 +80,8 @@
           bargap: 0.4,
           bargroupgap: 0,
           autosize: false,
-          width: 270,
-          height: 390,
+          width: 280,
+          height: 450,
           margin: {
             l: 30,
             r: 40,

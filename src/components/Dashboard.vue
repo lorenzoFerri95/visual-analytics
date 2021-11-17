@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="row justify-content-start ms-5 mb-5 pb-3">
+    <div class="row justify-content-start ms-5 mb-5">
       <div class="col-auto">
         <h5 class="header">Filters</h5>
         <TheForm
@@ -11,6 +11,7 @@
           :gender="gender"
         />
       </div>
+      <div class="col-1"></div>
       <div class="col-4 ms-4" align="center">
         <h5 class="header">Names List</h5>
         <div class="overflow-auto" style="height: 170px; width: 300px">
@@ -19,10 +20,10 @@
       </div>
     </div>
 
-    <div class="row justify-content-start ms-4 mb-4">
+    <div class="row justify-content-start ms-3 mb-5 pb-3">
       <div class="col-auto">
         <h5 class="header">Statistics</h5>
-        <div class="row justify-content-center mb-4">
+        <div class="row justify-content-center">
           <div class="col-auto">
             <BaseCard header="numer of persons" :text="numEmployee" />
           </div>
@@ -31,7 +32,7 @@
           </div>
         </div>
 
-        <div class="row justify-content-center mb-4">
+        <div class="row justify-content-center">
           <div class="col-auto">
             <BaseCard header="avg years since job start" :text="avgJobYears" />
           </div>
@@ -58,10 +59,10 @@
           </div>
         </div>
       </div>
-
-      <div class="col-8" align="center">
+      <div class="col-1"></div>
+      <div class="col-auto">
         <h5 class="header">Bar Charts</h5>
-        <div class="row justify-content-start ms-5 mb-0 pb-0">
+        <div class="row justify-content-start">
           <div class="col-auto ms-0 me-0 ps-0 pe-0">
             <BarChart
               plotId="Years in current job"
@@ -69,10 +70,10 @@
             />
           </div>
           <div class="col-auto ms-0 me-0 ps-0 pe-0">
-            <BarChart plotId="Job type" :aggregatedData="jobTypeData" />
+            <BarChart plotId="Age Rage" :aggregatedData="ageBindData" />
           </div>
           <div class="col-auto ms-0 me-0 ps-0 pe-0">
-            <BarChart plotId="Age Rage" :aggregatedData="ageBindData" />
+            <BarChart plotId="Job type" :aggregatedData="jobTypeData" />
           </div>
         </div>
       </div>
@@ -100,11 +101,11 @@
   import crossfilter from "crossfilter2";
 
   let cf;
-  let dimJobType;
-  let dimAgeBind;
   let dimMembership;
   let dimKidnapped;
   let dimGender;
+  let dimJobType;
+  let dimAgeBind;
   let dimJobYearsBind;
 
   export default {
@@ -121,14 +122,6 @@
         /* variabili di stato per i dati fetchati */
         personsData: [],
         /* variabili di stato per le opzioni selezionabili dall'utente nei filtri */
-        jobType: {
-          value: "",
-          options: [],
-        },
-        ageBind: {
-          value: "",
-          options: [],
-        },
         membership: {
           value: "",
           options: [],
@@ -138,6 +131,14 @@
           options: [],
         },
         gender: {
+          value: "",
+          options: [],
+        },
+        jobType: {
+          value: "",
+          options: [],
+        },
+        ageBind: {
           value: "",
           options: [],
         },
@@ -153,26 +154,26 @@
         avgPassportExpireYears: 0,
         /* per i Bar Charts */
         jobYearsBindData: [],
-        jobTypeData: [],
         ageBindData: [],
+        jobTypeData: [],
         /* per il network */
         networkNodesData: [],
         networkLinksData: [],
       };
     },
     mounted: function() {
-      fetch("./static/data/persons_try.json")
+      fetch("./static/data/persons.json")
         .then(response => response.json())
         .then(data => {
           this.personsData = data.map(row => this.personsDataParsing(row));
 
           cf = crossfilter(this.personsData);
 
-          dimJobType = cf.dimension(row => row.jobType);
-          dimAgeBind = cf.dimension(row => row.ageBind);
           dimMembership = cf.dimension(row => row.membership);
           dimKidnapped = cf.dimension(row => row.kidnapped);
           dimGender = cf.dimension(row => row.gender);
+          dimJobType = cf.dimension(row => row.jobType);
+          dimAgeBind = cf.dimension(row => row.ageBind);
           dimJobYearsBind = cf.dimension(row => row.jobYearsBind);
 
           this.membership.options.push("All");
@@ -203,7 +204,6 @@
               .all()
               .map(row => row.key)
           );
-          this.gender.options = this.gender.options.filter(s => s != null);
           this.gender.value = "All";
 
           this.jobType.options.push("All");
@@ -214,19 +214,7 @@
               .all()
               .map(row => row.key)
           );
-          this.jobType.options = this.jobType.options.filter(s => s != null);
           this.jobType.value = "All";
-
-          this.ageBind.options.push("All");
-          this.ageBind.options.push(
-            ...dimAgeBind
-              .group()
-              .reduceCount()
-              .all()
-              .map(row => row.key)
-          );
-          this.ageBind.options = this.ageBind.options.filter(s => s != null);
-          this.ageBind.value = "All";
 
           this.refreshDashboard();
         });

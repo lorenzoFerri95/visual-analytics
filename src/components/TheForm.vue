@@ -72,7 +72,6 @@
               type="radio"
               class="btn-check"
               autocomplete="off"
-              disabled
             />
             <label
               :for="`gender-radio-${key}`"
@@ -87,36 +86,16 @@
 
     <!-- SELECTIONS -->
     <div class="row justify-content-center">
-      <div class="col-auto">
+      <div class="col-6">
         <label for="jobType-select">Job type</label>
         <select
           id="jobType-select"
           v-model="jobType.value"
           :options="jobType.options"
           class="form-select"
-          disabled
         >
           <option
             v-for="(val, key) in jobType.options"
-            v-bind:key="key"
-            v-bind:value="val"
-          >
-            {{ val }}
-          </option>
-        </select>
-      </div>
-
-      <div class="col-auto">
-        <label for="ageRange-select">Age range</label>
-        <select
-          id="ageRange-select"
-          v-model="ageBind.value"
-          :options="ageBind.options"
-          class="form-select"
-          disabled
-        >
-          <option
-            v-for="(val, key) in ageBind.options"
             v-bind:key="key"
             v-bind:value="val"
           >
